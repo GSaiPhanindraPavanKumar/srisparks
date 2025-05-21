@@ -2,10 +2,10 @@ import { initNavbar, initMobileMenu } from './components/navbar/navbar.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Load navbar with error handling
-    fetch('components/navbar/navbar.html')
+    fetch('./components/navbar/navbar.html')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to load navbar');
+                throw new Error(`Failed to load navbar: ${response.status}`);
             }
             return response.text();
         })
