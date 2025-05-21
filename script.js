@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Initialize navbar functionality
             initNavbar();
             initMobileMenu();
+            
+            // Handle mobile menu links after navbar is loaded
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                const mobileLinks = mobileMenu.getElementsByTagName('a');
+                for (let link of mobileLinks) {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                }
+            }
         })
         .catch(error => {
             console.error('Navbar loading error:', error);
@@ -47,173 +58,135 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const carouselTrack = document.querySelector('.carousel-track');
-    const prevButton = document.querySelector('.carousel-btn.prev');
-    const nextButton = document.querySelector('.carousel-btn.next');
-    let currentSlide = 0;
-
-    // Array of project images with their orientations
-    const projectImages = [
-        { src: 'project-1.jpg', orientation: 'landscape' },
-        { src: 'project-2.jpg', orientation: 'portrait' },
-        { src: 'project-3.jpg', orientation: 'landscape' },
-        { src: 'project-4.jpg', orientation: 'portrait' },
-        { src: 'project-5.jpg', orientation: 'landscape' }
-    ];
-
-    // Function to load project images
-    function loadProjectImages() {
-        projectImages.forEach(image => {
-            const slide = document.createElement('div');
-            slide.className = 'carousel-slide w-full h-full flex-shrink-0 flex items-center justify-center bg-gray-100';
-            
-            const imgWrapper = document.createElement('div');
-            imgWrapper.className = `relative w-full h-full ${image.orientation === 'portrait' ? 'flex justify-center' : ''}`;
-            
-            const img = document.createElement('img');
-            img.src = `./images/projects/${image.src}`;
-            img.alt = 'Project Image';
-            img.className = `${image.orientation === 'portrait' ? 'h-full w-auto' : 'w-full h-full'} object-contain`;
-            
-            // Add loading state and error handling
-            img.addEventListener('load', () => {
-                img.classList.add('opacity-100');
-                img.classList.remove('opacity-0');
-            });
-            
-            img.addEventListener('error', () => {
-                imgWrapper.innerHTML = `
-                    <div class="flex items-center justify-center w-full h-full bg-gray-200">
-                        <span class="text-gray-500">Image not found</span>
-                    </div>
-                `;
-            });
-            
-            imgWrapper.appendChild(img);
-            slide.appendChild(imgWrapper);
-            carouselTrack.appendChild(slide);
-        });
-
-        // Get all slides after adding them
-        slides = document.querySelectorAll('.carousel-slide');
-        if (slides.length > 0) {
-            updateCarousel();
-        }
-    }
-
-    function updateCarousel() {
-        carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    // Add click events for navigation buttons
-    prevButton?.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateCarousel();
-    });
-
-    nextButton?.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateCarousel();
-    });
-
-    // Auto-advance carousel
-    setInterval(() => {
-        if (slides.length > 1) {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateCarousel();
-        }
-    }, 5000);
-
-    // Load project images when the page loads
-    loadProjectImages();
-
-    // Close mobile menu when clicking a link
-    const mobileLinks = mobileMenu.getElementsByTagName('a');
-    for (let link of mobileLinks) {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    }
-
-    // Scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
-        observer.observe(element);
-    });
-
-    // Add dynamic card hover effects
-    document.querySelectorAll('.service-card, .feature-card, .value-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2)/20}deg) rotateY(${-(x - rect.width/2)/20}deg) scale(1.02)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
-        });
-    });
-
-    // Dynamic number counter for statistics
-    function animateValue(element, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            element.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
+    // Scroll animations with null checks
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        window.requestAnimationFrame(step);
-    }
 
-    // Particle background effect for hero section
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
-        const particlesConfig = {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#ffffff' },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                move: { enable: true, speed: 2 }
-            }
-        };
-        particlesJS('particles-js', particlesConfig);
-    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    // Add smooth parallax effect
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        document.querySelectorAll('.parallax').forEach(element => {
-            const speed = element.dataset.speed || 0.5;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-
-    // Add navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        if (animatedElements.length > 0) {
+            animatedElements.forEach((element) => {
+                observer.observe(element);
+            });
         }
-    });
+    }
+
+    // Add dynamic card hover effects with null checks
+    function initCardEffects() {
+        const cards = document.querySelectorAll('.service-card, .feature-card, .value-card');
+        if (cards.length > 0) {
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2)/20}deg) rotateY(${-(x - rect.width/2)/20}deg) scale(1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+        }
+    }
+
+    // Initialize all effects
+    function initializeAll() {
+        // Initialize carousel
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        if (track && slides.length > 0) {
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const offset = -currentIndex * 25;
+                track.style.transform = `translateX(${offset}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }
+
+            // Set initial position
+            updateCarousel();
+
+            // Auto advance slides
+            setInterval(nextSlide, 5000);
+        }
+
+        // Initialize particles first if available
+        if (window.particlesJS) {
+            try {
+                // Wait a brief moment to ensure DOM is ready
+                setTimeout(() => {
+                    particlesJS('particles-js', {
+                        particles: {
+                            number: { value: 50 },
+                            color: { value: '#ffffff' },
+                            opacity: { 
+                                value: 0.5,
+                                random: false
+                            },
+                            size: { 
+                                value: 3,
+                                random: true 
+                            },
+                            move: { 
+                                enable: true,
+                                speed: 2,
+                                direction: "none",
+                                random: true,
+                                straight: false,
+                                out_mode: "out",
+                                bounce: false,
+                            }
+                        },
+                        interactivity: {
+                            detect_on: "canvas",
+                            events: {
+                                onhover: { enable: true, mode: "repulse" },
+                                onclick: { enable: false },
+                                resize: true
+                            }
+                        },
+                        retina_detect: true
+                    });
+                }, 100);
+            } catch (error) {
+                console.warn('ParticlesJS failed to initialize:', error);
+            }
+        }
+
+        // Initialize other components
+        initScrollAnimations();
+        initCardEffects();
+        
+        // Add navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+    }
+
+    // Call initialization after DOM is loaded
+    setTimeout(initializeAll, 100);
 });
