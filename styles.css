@@ -585,3 +585,52 @@ section h2::after {
         margin: 0 1rem;
     }
 }
+
+/* Add these table styles */
+.solar-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    min-width: 600px; /* Ensures table doesn't get too squeezed */
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 768px) {
+    th, td {
+        padding: 0.8rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .solar-table-container {
+        margin: 1.5rem -1rem;
+        border-radius: 0;
+    }
+}
