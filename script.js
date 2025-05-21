@@ -1,4 +1,25 @@
+import { initNavbar, initMobileMenu } from './components/navbar/navbar.js';
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Load navbar with error handling
+    fetch('components/navbar/navbar.html')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load navbar');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('navbar-container').innerHTML = data;
+            // Initialize navbar functionality
+            initNavbar();
+            initMobileMenu();
+        })
+        .catch(error => {
+            console.error('Navbar loading error:', error);
+            document.getElementById('navbar-container').innerHTML = '<div class="bg-red-500 text-white p-4">Error loading navigation</div>';
+        });
+
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -106,14 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load project images when the page loads
     loadProjectImages();
 
-    // Mobile menu toggle
-    const menuButton = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
     // Close mobile menu when clicking a link
     const mobileLinks = mobileMenu.getElementsByTagName('a');
     for (let link of mobileLinks) {
@@ -192,5 +205,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const speed = element.dataset.speed || 0.5;
             element.style.transform = `translateY(${scrolled * speed}px)`;
         });
+    });
+
+    // Add navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
 });

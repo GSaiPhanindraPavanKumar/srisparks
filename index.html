@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sri Sparks Infra Pvt Ltd</title>
+    <title>SriSparks Infra Pvt Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/navbar/navbar.css">
     <script>
         tailwind.config = {
             theme: {
@@ -54,53 +55,12 @@
     </style>
 </head>
 <body class="font-sans">
-    <!-- Navbar -->
-    <header class="fixed w-full top-0 z-50 bg-gradient-to-r from-primary to-blue-800 shadow-lg">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-white">Sri Sparks</h1>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#home" class="text-white hover:text-secondary transition-colors duration-300">Home</a>
-                    <a href="#about" class="text-white hover:text-secondary transition-colors duration-300">About</a>
-                    <a href="#services" class="text-white hover:text-secondary transition-colors duration-300">Services</a>
-                    <a href="#solar" class="text-white hover:text-secondary transition-colors duration-300">Solar Projects</a>
-                    <a href="#om" class="text-white hover:text-secondary transition-colors duration-300">O&M / Manpower</a>
-                    <a href="#projects" class="text-white hover:text-secondary transition-colors duration-300">Projects</a>
-                    <a href="#values" class="text-white hover:text-secondary transition-colors duration-300">Core Values</a>
-                    <a href="#contact" class="text-white hover:text-secondary transition-colors duration-300">Contact</a>
-                </nav>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div id="mobile-menu" class="md:hidden hidden">
-                <nav class="flex flex-col space-y-4 py-4">
-                    <a href="#home" class="text-white hover:text-secondary transition-colors duration-300">Home</a>
-                    <a href="#about" class="text-white hover:text-secondary transition-colors duration-300">About</a>
-                    <a href="#services" class="text-white hover:text-secondary transition-colors duration-300">Services</a>
-                    <a href="#solar" class="text-white hover:text-secondary transition-colors duration-300">Solar Projects</a>
-                    <a href="#om" class="text-white hover:text-secondary transition-colors duration-300">O&M / Manpower</a>
-                    <a href="#projects" class="text-white hover:text-secondary transition-colors duration-300">Projects</a>
-                    <a href="#values" class="text-white hover:text-secondary transition-colors duration-300">Core Values</a>
-                    <a href="#contact" class="text-white hover:text-secondary transition-colors duration-300">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <!-- Include Navbar -->
+    <div id="navbar-container"></div>
 
     <section id="home" class="hero-section bg-cover bg-center h-screen bg-black bg-opacity-50" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./images/hero-bg.jpg');">
         <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-            <h2 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 drop-shadow-lg">Welcome to Sri Sparks Infra Pvt Ltd</h2>
+            <h2 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4 drop-shadow-lg">Welcome to SriSparks Infra Pvt Ltd</h2>
             <p class="text-lg md:text-2xl text-white mb-8 drop-shadow-md">Empowering global digital transformation through cutting-edge, resilient and sustainable infrastructure solutions.</p>
             <div class="cta-buttons space-x-4">
                 <a href="#solar" class="inline-block btn-primary bg-secondary text-white py-3 px-8 rounded-lg shadow-md hover:bg-primary transition-all duration-300 transform hover:-translate-y-1">Explore Solar Solutions</a>
@@ -113,7 +73,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Us</h2>
             <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
-                Sri Sparks Infra Pvt Ltd is a vibrant startup in India promoted by Singapore’s M/s Rishi Engineering PTE Ltd. We offer innovative and secure infrastructure solutions, delivering unmatched reliability, scalability, and sustainability. Our Singapore-based partner, Rishi Engineering, has been providing engineering contracting services since 2016, with a strong background in project management and execution.
+                SriSparks Infra Pvt Ltd is a vibrant startup in India promoted by Singapore’s M/s Rishi Engineering PTE Ltd. We offer innovative and secure infrastructure solutions, delivering unmatched reliability, scalability, and sustainability. Our Singapore-based partner, Rishi Engineering, has been providing engineering contracting services since 2016, with a strong background in project management and execution.
             </p>
         </div>
     </section>
@@ -359,21 +319,34 @@
                     <h3 class="text-xl font-semibold mb-4"><i class="fas fa-address-card mr-2"></i> Contact Details</h3>
                     <ul class="list-none">
                         <li class="text-gray-700 mb-2"><i class="fas fa-envelope mr-2"></i> info@srisparks.in</li>
+                        <li class="text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i> +91 93985 33188 (SriSparks Infra)</li>
                         <li class="text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i> +91 90001 19911 (Yatam Rama Krishna)</li>
-                        <li class="text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i> +91 9398533188 (SriSparks Infra)</li>
-                        <li class="text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i> +91 9666776116 (Venu)</li>
+                        <li class="text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i> +91 89858 27306 (Jayavani)</li>
                     </ul>
                 </div>
                 <div class="address bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Our Location</h3>
-                    <p class="text-gray-700 mb-4">
-                        Door No: 7-184/3, 2nd Floor,<br>
-                        New Building Colony,<br>
-                        Palangi, Tanuku - 534216,<br>
-                        E.G.Dist, AP
-                    </p>
-                    <div class="map">
-                        <!-- Add Google Maps iframe here if needed -->
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="md:w-1/2">
+                            <p class="text-gray-700">
+                                Door No: 7-184/3, 2nd Floor,<br>
+                                New Building Colony,<br>
+                                Palangi, Tanuku - 534216,<br>
+                                E.G.Dist, AP
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 h-[200px] rounded-lg overflow-hidden">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.9601784776883!2d81.6970473!3d16.773424100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37b9000ca0cedd%3A0xb9e9e8d076191c02!2sSrisparks%20Infra%20Private%20limited!5e1!3m2!1sen!2sin!4v1747807414309!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="w-full h-full"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -384,9 +357,10 @@
     </button>
     <footer class="bg-primary text-white py-4">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">&copy; 2025 Sri Sparks Infra Pvt Ltd. All rights reserved.</p>
+            <p class="text-sm">&copy; 2025 SriSparks Infra Pvt Ltd. All rights reserved.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="/components/navbar/navbar.js" type="module"></script>
+    <script src="/script.js" type="module"></script>
 </body>
 </html>
