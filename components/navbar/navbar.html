@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
             <div class="flex items-center gap-3">
-                <img src="./images/logo/logo.png" alt="SriSparks Logo" class="h-10 w-auto">
+                <img src="/images/logo/logo.png" alt="SriSparks Logo" class="h-10 w-auto" id="navbar-logo">
                 <h1 class="navbar-brand">SriSparks</h1>
             </div>
             
@@ -15,14 +15,26 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-6">
-                <a href="#home" class="nav-link text-white hover:text-secondary">Home</a>
-                <a href="#about" class="nav-link text-white hover:text-secondary">About</a>
-                <a href="#services" class="nav-link text-white hover:text-secondary">Services</a>
-                <a href="#solar" class="nav-link text-white hover:text-secondary">Solar Projects</a>
-                <a href="#om" class="nav-link text-white hover:text-secondary">O&M / Manpower</a>
-                <a href="#projects" class="nav-link text-white hover:text-secondary">Projects</a>
-                <a href="#values" class="nav-link text-white hover:text-secondary">Core Values</a>
-                <a href="#contact" class="nav-link text-white hover:text-secondary">Contact</a>
+                <a href="/" class="nav-link text-white hover:text-secondary">Home</a>
+                <a href="/#about" class="nav-link text-white hover:text-secondary">About</a>
+                <a href="/#services" class="nav-link text-white hover:text-secondary">Services</a>
+                <div class="dropdown">
+                    <a href="/#solar" class="nav-link text-white hover:text-secondary">Solar Projects</a>
+                    <div class="dropdown-content">
+                        <div class="sub-dropdown">
+                            <a href="/#rooftop" class="nav-link">Roof Top</a>
+                            <div class="sub-dropdown-content">
+                                <a href="/solar/pm-surya-ghar" class="nav-link">PM Surya Ghar</a>
+                                <a href="/solar/commercial" class="nav-link">Commercial</a>
+                            </div>
+                        </div>
+                        <a href="/#ground-mounted" class="nav-link">Ground Mounted</a>
+                    </div>
+                </div>
+                <a href="/#om" class="nav-link text-white hover:text-secondary">O&M / Manpower</a>
+                <a href="/#projects" class="nav-link text-white hover:text-secondary">Projects</a>
+                <a href="/#values" class="nav-link text-white hover:text-secondary">Core Values</a>
+                <a href="/#contact" class="nav-link text-white hover:text-secondary">Contact</a>
             </nav>
         </div>
 
@@ -32,7 +44,19 @@
                 <a href="#home" class="nav-link text-white hover:text-secondary">Home</a>
                 <a href="#about" class="nav-link text-white hover:text-secondary">About</a>
                 <a href="#services" class="nav-link text-white hover:text-secondary">Services</a>
-                <a href="#solar" class="nav-link text-white hover:text-secondary">Solar Projects</a>
+                <div class="dropdown">
+                    <a href="#solar" class="nav-link text-white hover:text-secondary">Solar Projects</a>
+                    <div class="dropdown-content">
+                        <div class="sub-dropdown">
+                            <a href="#rooftop" class="nav-link">Roof Top</a>
+                            <div class="sub-dropdown-content">
+                                <a href="/solar/pm-surya-ghar" class="nav-link">PM Surya Ghar</a>
+                                <a href="/solar/commercial" class="nav-link">Commercial</a>
+                            </div>
+                        </div>
+                        <a href="#ground-mounted" class="nav-link">Ground Mounted</a>
+                    </div>
+                </div>
                 <a href="#om" class="nav-link text-white hover:text-secondary">O&M / Manpower</a>
                 <a href="#projects" class="nav-link text-white hover:text-secondary">Projects</a>
                 <a href="#values" class="nav-link text-white hover:text-secondary">Core Values</a>

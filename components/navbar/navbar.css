@@ -76,3 +76,72 @@
 .navbar img:hover {
     transform: scale(1.05);
 }
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: rgba(0, 86, 179, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 0.5rem 0;
+}
+
+.dropdown-content .sub-dropdown {
+    position: relative;
+}
+
+.sub-dropdown-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 200px;
+    background: rgba(0, 86, 179, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-content,
+.sub-dropdown:hover .sub-dropdown-content {
+    display: block;
+}
+
+.dropdown-content a,
+.sub-dropdown-content a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover,
+.sub-dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile dropdown adjustments */
+@media (max-width: 768px) {
+    .dropdown-content,
+    .sub-dropdown-content {
+        position: static;
+        display: none;
+        background: rgba(0, 0, 0, 0.1);
+        padding-left: 1rem;
+    }
+
+    .dropdown.active .dropdown-content,
+    .sub-dropdown.active .sub-dropdown-content {
+        display: block;
+    }
+}

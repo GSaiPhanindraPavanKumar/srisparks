@@ -1,8 +1,13 @@
 import { initNavbar, initMobileMenu } from './components/navbar/navbar.js';
+import { initFooter } from './components/footer/footer.js';
+import { router } from './router.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Load navbar with error handling
-    fetch('./components/navbar/navbar.html')
+    // Load navbar with path handling
+    const navbarContainer = document.getElementById('navbar-container');
+    const parentLevel = navbarContainer?.getAttribute('data-parent-level') || './';
+    
+    fetch(parentLevel + 'components/navbar/navbar.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load navbar: ${response.status}`);
@@ -10,7 +15,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.text();
         })
         .then(data => {
-            document.getElementById('navbar-container').innerHTML = data;
+            // Update paths based on page level
+            const updatedData = data
+                .replace(/href="\.\//g, `href="${parentLevel}`)
+                .replace('src="/images/', `src="${parentLevel}images/`);
+            
+            navbarContainer.innerHTML = updatedData;
+            
+            // Ensure logo path is correct
+            const logo = document.getElementById('navbar-logo');
+            if (logo) {
+                logo.src = parentLevel + 'images/logo/logo.png';
+            }
+
             // Initialize navbar functionality
             initNavbar();
             initMobileMenu();
@@ -31,30 +48,128 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('navbar-container').innerHTML = '<div class="bg-red-500 text-white p-4">Error loading navigation</div>';
         });
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
+    // Load footer with path handling
+    const footerContainer = document.getElementById('footer-container');
+    if (footerContainer) {
+        const parentLevel = footerContainer.getAttribute('data-parent-level') || './';
+        
+        fetch(parentLevel + 'components/footer/footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load footer: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Update paths based on page level
+                const updatedData = data
+                    .replace(/src="\/images\//g, `src="${parentLevel}images/`)
+                    .replace(/href="\//g, `href="${parentLevel}`)
+                    .replace(/href="#/g, `href="${parentLevel}#`);
+                
+                footerContainer.innerHTML = updatedData;
+                
+                // Fix footer logo path
+                const footerLogo = footerContainer.querySelector('.footer-logo img');
+                if (footerLogo) {
+                    footerLogo.src = parentLevel + 'images/logo/logo.png';
+                }
+                
+                // Initialize footer functionality
+                initFooter();
+            })
+            .catch(error => {
+                console.error('Footer loading error:', error);
+                footerContainer.innerHTML = '<div class="bg-red-500 text-white p-4">Error loading footer</div>';
+            });
+    }
+
+    // Enhanced scroll to top button with hover effect and improved visibility
+    const scrollBtn = document.getElementById('scrollToTop');
+    if (scrollBtn) {
+        // Show/hide based on scroll position
+        window.addEventListener('scroll', function() {
+            // Show button if scrolled down
+            if (window.pageYOffset > 300) {
+                // Get the footer position
+                const footer = document.querySelector('.footer-section');
+                const footerPosition = footer ? footer.getBoundingClientRect() : null;
+                const viewportHeight = window.innerHeight;
+                
+                scrollBtn.style.display = 'flex';
+                
+                // If footer is in view, move button up
+                if (footerPosition && footerPosition.top < (viewportHeight - 80)) {
+                    if (!scrollBtn.classList.contains('above-footer')) {
+                        scrollBtn.classList.add('above-footer');
+                    }
+                } else {
+                    scrollBtn.classList.remove('above-footer');
+                }
+                
+                // Make button visible with a slight delay
+                setTimeout(() => {
+                    scrollBtn.classList.add('scroll-visible');
+                }, 10);
+            } else {
+                scrollBtn.classList.remove('scroll-visible');
+                setTimeout(() => {
+                    if (!scrollBtn.classList.contains('scroll-visible')) {
+                        scrollBtn.style.display = 'none';
+                    }
+                }, 300);
+            }
+        });
+
+        // Check button position on page load and resize
+        function updateButtonPosition() {
+            const footer = document.querySelector('.footer-section');
+            if (footer && scrollBtn.style.display !== 'none') {
+                const footerPosition = footer.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                if (footerPosition.top < (viewportHeight - 80)) {
+                    scrollBtn.classList.add('above-footer');
+                } else {
+                    scrollBtn.classList.remove('above-footer');
+                }
+            }
+        }
+        
+        // Add event listeners for resize and load
+        window.addEventListener('resize', updateButtonPosition);
+        window.addEventListener('load', updateButtonPosition);
+        
+        // Add hover effect
+        scrollBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 5px 15px rgba(255, 153, 0, 0.6)';
+        });
+        
+        scrollBtn.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+
+        // Smooth scroll to top
+        scrollBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
                 behavior: 'smooth'
             });
         });
-    });
+    }
 
-    // Scroll to top button
-    const scrollBtn = document.getElementById('scrollToTop');
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollBtn.style.display = 'flex';
-        } else {
-            scrollBtn.style.display = 'none';
-        }
-    });
-
-    scrollBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    // Smooth scrolling with null checks
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 

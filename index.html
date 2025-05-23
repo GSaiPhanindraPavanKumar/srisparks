@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./components/navbar/navbar.css">
+    <link rel="stylesheet" href="./components/footer/footer.css">
+    <link rel="icon" href="images/favicon/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon/favicon.png">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -308,6 +311,7 @@
         </div>
     </section>
 
+    <!-- Contact section content -->
     <section id="contact" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
@@ -352,11 +356,10 @@
     <button id="scrollToTop" class="scroll-top fixed bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-md hover:bg-secondary transition-all duration-300">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <footer class="bg-primary text-white py-4">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">&copy; 2025 SriSparks Infra Pvt Ltd. All rights reserved.</p>
-        </div>
-    </footer>
+    
+    <!-- Footer Component -->
+    <div id="footer-container" data-parent-level="./"></div>
+    
     <script src="./components/navbar/navbar.js" type="module"></script>
     <script src="./script.js" type="module"></script>
 </body>
