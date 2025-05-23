@@ -11,44 +11,63 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="../../images/favicon/favicon.png">
     <link rel="apple-touch-icon" href="../../images/favicon/favicon.png">
-    <!-- AOS library removed temporarily to fix display issues -->
+    <!-- Add AOS animation library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 </head>
 <body class="font-sans">
     <div id="navbar-container" data-parent-level="../../"></div>
 
-    <!-- Hero Section with fixed spacing -->
+    <!-- Enhanced Hero Section with floating shapes -->
     <section class="hero-section text-white overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
         <div class="container mx-auto px-4 text-center">
             <h1 class="hero-title">PM Surya Ghar Yojana</h1>
             <p class="hero-subtitle mx-auto">Transform your home with solar power and get up to <span class="hero-highlight">₹78,000</span> in government subsidies</p>
             
-            <!-- Hero Icons -->
+            <!-- Enhanced Hero Icons with animations -->
             <div class="hero-icons-wrapper mx-auto flex items-center justify-center">
                 <div class="text-center flex flex-col items-center">
                     <i class="fas fa-solar-panel text-6xl mb-4 text-yellow-300"></i>
                     <p class="text-lg font-medium mt-2">Solar Panels</p>
                 </div>
-                <div class="text-4xl mx-6 self-center flex items-center h-full">+</div>
+                <div class="hero-operator mx-6 self-center flex items-center h-full">+</div>
                 <div class="text-center flex flex-col items-center">
                     <i class="fas fa-home text-6xl mb-4 text-white"></i>
                     <p class="text-lg font-medium mt-2">Residential</p>
                 </div>
-                <div class="text-4xl mx-6 self-center flex items-center h-full">=</div>
+                <div class="hero-operator mx-6 self-center flex items-center h-full">=</div>
                 <div class="text-center flex flex-col items-center">
                     <i class="fas fa-money-bill-wave text-6xl mb-4 text-green-300"></i>
                     <p class="text-lg font-medium mt-2">Savings</p>
                 </div>
             </div>
+            
+            <!-- Add scroll down button -->
+            <div class="mt-10">
+                <a href="#benefits" class="scroll-down-btn">
+                    <span class="text-sm text-white/80 block mb-2">Learn More</span>
+                    <div class="scroll-arrow">
+                        <i class="fas fa-chevron-down text-xl animate-bounce"></i>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <section class="py-20">
+    <section id="benefits" class="py-20">
         <div class="container mx-auto px-4">
-            <!-- Benefits Cards with fixed grid layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="display:grid;">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">SCHEME BENEFITS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4" data-aos="fade-up">Why Choose PM Surya Ghar?</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"></div>
+            </div>
+            
+            <!-- Benefits Cards with enhanced styling -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="display:grid;" data-aos="fade-up">
                 <!-- Financial Benefits Card -->
-                <div class="benefit-card">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="benefit-header">
                         <div class="benefit-icon-container">
                             <i class="fas fa-money-bill-wave benefit-icon"></i>
@@ -72,7 +91,7 @@
                 </div>
 
                 <!-- Technical Details Card -->
-                <div class="benefit-card">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="benefit-header">
                         <div class="benefit-icon-container">
                             <i class="fas fa-solar-panel benefit-icon"></i>
@@ -96,7 +115,7 @@
                 </div>
 
                 <!-- Additional Benefits Card -->
-                <div class="benefit-card">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="benefit-header">
                         <div class="benefit-icon-container">
                             <i class="fas fa-gift benefit-icon"></i>
@@ -120,13 +139,13 @@
                 </div>
             </div>
             
-            <!-- Section Divider -->
-            <div class="section-divider">
+            <!-- Enhanced Section Divider -->
+            <div class="section-divider" data-aos="fade-up">
                 <div class="section-divider-line"></div>
             </div>
 
             <!-- Subsidy Table with enhanced styling -->
-            <div class="subsidy-table-container text-center">
+            <div class="subsidy-table-container text-center" data-aos="fade-up">
                 <h2 class="table-title">PM Surya Ghar Yojana Subsidy Example</h2>
                 <div class="overflow-x-auto">
                     <table>
@@ -170,8 +189,8 @@
                 </div>
             </div>
             
-            <!-- Bank Logos Section - Enhanced & More Attractive -->
-            <div class="financial-support-container">
+            <!-- Enhanced Bank Logos Section -->
+            <div class="financial-support-container" data-aos="fade-up">
                 <div class="financial-support-header">
                     <div class="support-icon">
                         <i class="fas fa-university"></i>
@@ -181,63 +200,68 @@
                 </div>
                 
                 <div class="bank-features">
-                    <div class="bank-feature">
+                    <div class="bank-feature" data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-percentage"></i>
                         <h4>Low Interest</h4>
                         <p>Special interest rates for solar installations</p>
                     </div>
-                    <div class="bank-feature">
+                    <div class="bank-feature" data-aos="fade-up" data-aos-delay="200">
                         <i class="fas fa-file-signature"></i>
                         <h4>Simple Process</h4>
                         <p>Streamlined documentation & approval</p>
                     </div>
-                    <div class="bank-feature">
+                    <div class="bank-feature" data-aos="fade-up" data-aos-delay="300">
                         <i class="fas fa-calendar-alt"></i>
                         <h4>Flexible Tenure</h4>
                         <p>Up to 5 years repayment period</p>
                     </div>
                 </div>
                 
-                <div class="bank-partners">
+                <div class="bank-partners" data-aos="fade-up">
                     <h4>Our Banking Partners</h4>
                     <div class="bank-logos-container">
-                        <div class="bank-logo-item">
+                        <div class="bank-logo-item" data-aos="zoom-in" data-aos-delay="100">
                             <img src="../../images/bank-logos/sbi.png" alt="SBI" class="bank-logo">
                             <span>State Bank of India</span>
                         </div>
-                        <div class="bank-logo-item">
+                        <div class="bank-logo-item" data-aos="zoom-in" data-aos-delay="200">
                             <img src="../../images/bank-logos/union-bank.png" alt="Union Bank" class="bank-logo">
                             <span>Union Bank</span>
                         </div>
-                        <div class="bank-logo-item">
+                        <div class="bank-logo-item" data-aos="zoom-in" data-aos-delay="300">
                             <img src="../../images/bank-logos/indian-bank.png" alt="Indian Bank" class="bank-logo">
                             <span>Indian Bank</span>
                         </div>
-                        <div class="bank-logo-item">
+                        <div class="bank-logo-item" data-aos="zoom-in" data-aos-delay="400">
                             <img src="../../images/bank-logos/bob.png" alt="Bank of Baroda" class="bank-logo">
                             <span>Bank of Baroda</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="loan-cta">
+                <div class="loan-cta" data-aos="fade-up">
                     <p>Get help with your loan application process</p>
-                    <a href="../../#contact" class="loan-btn">Contact Our Team</a>
+                    <a href="../../#contact" class="loan-btn">
+                        <i class="fas fa-hands-helping mr-2"></i> Contact Our Team
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-
-    <!-- CTA Section -->
-    <section class="cta-section text-white" data-aos="fade-up">
+    <!-- Enhanced CTA Section with animated shapes -->
+    <section class="cta-section text-white">
+        <div class="cta-shape cta-shape-1"></div>
+        <div class="cta-shape cta-shape-2"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="cta-title font-bold mb-8">Ready to Go Solar?</h2>
-            <a href="../../#contact" class="cta-btn inline-block">
-                Contact Us Now
+            <h2 class="cta-title font-bold mb-8" data-aos="fade-up">Ready to Go Solar?</h2>
+            <a href="../../#contact" class="cta-btn inline-block" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-solar-panel mr-2"></i> Contact Us Now
             </a>
         </div>
     </section>
+
+    <!-- Scroll to top button -->
     <button id="scrollToTop" class="scroll-top fixed bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-md hover:bg-secondary transition-all duration-300">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -248,8 +272,19 @@
     <script src="../../components/navbar/navbar.js" type="module"></script>
     <script src="../../script.js" type="module"></script>
     <script src="../../scroll-animations.js"></script>
+    <!-- Add AOS animation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS animations
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: false,
+                mirror: true,
+                offset: 50
+            });
+            
             // Force-fix any display issues with benefit cards
             setTimeout(() => {
                 document.querySelectorAll('.benefit-card').forEach(card => {
@@ -271,17 +306,20 @@
                 }
             });
             
-            // Make table rows interactive
-            const tableRows = document.querySelectorAll('tbody tr');
-            tableRows.forEach(row => {
-                row.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
-                });
-                
-                row.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                    this.style.boxShadow = 'none';
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
         });
