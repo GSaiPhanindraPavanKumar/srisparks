@@ -44,9 +44,9 @@
         <!-- Particles Container -->
         <div id="particles-js" class="absolute inset-0 z-20"></div>
 
-        <!-- Hero Carousel -->
-        <div class="absolute inset-0">
-            <div class="carousel-container">
+        <!-- Hero Carousel - Increased z-index and fixed visibility -->
+        <div class="absolute inset-0 z-10 carousel-wrapper">
+            <div class="carousel-container" style="display: block; opacity: 1;">
                 <div class="carousel-track">
                     <div class="carousel-slide" style="background-image: url('./images/hero/slide1.jpg')"></div>
                     <div class="carousel-slide" style="background-image: url('./images/hero/slide2.jpg')"></div>
@@ -73,18 +73,10 @@
                 <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">O&M</span>
                 <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">MANPOWER</span>
             </div>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#solar" class="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">
-                    Explore Solar Solutions
-                </a>
-                <a href="#contact" class="px-8 py-3 bg-white text-primary rounded-lg hover:bg-opacity-90 transition-all transform hover:-translate-y-1">
-                    Contact Us
-                </a>
-            </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-gray-100">
+    <section id="about" class="py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Us</h2>
             <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
@@ -161,89 +153,7 @@
     </section>
 
 
-    <section id="solar" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Solar Projects</h2>
-            <div class="features-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-4">Residential Solar</h3>
-                        <p class="text-gray-700 mb-4">Install solar roof top on your house with GOVERNMENT SUBSIDY and reduce Electricity bill.</p>
-                        <ul class="list-disc list-inside mb-4">
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>Government subsidy available</li>
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>EMI facility</li>
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>Reduced Electricity Bill</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="feature-card bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-4">Commercial Solutions</h3>
-                        <p class="text-gray-700 mb-4">We also do commercial roof top ON GRID SOLAR SYSTEM INSTALLATIONS</p>
-                        <ul class="list-disc list-inside mb-4">
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>Custom solutions up to 50kW</li>
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>Professional installation</li>
-                            <li class="text-gray-700"><i class="fas fa-check text-primary mr-2"></i>Ongoing maintenance support</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <h3 class="text-2xl font-bold text-center my-8">PM Surya Ghar Yojana Subsidy Example</h3>
-            <div class="solar-table-container overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg shadow-md">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th class="py-3 px-4 text-left">Load</th>
-                            <th class="py-3 px-4 text-left">Units/Month</th>
-                            <th class="py-3 px-4 text-left">Current Bill</th>
-                            <th class="py-3 px-4 text-left">Post Solar Bill</th>
-                            <th class="py-3 px-4 text-left">Savings/Year</th>
-                            <th class="py-3 px-4 text-left">Govt. Subsidy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-3 px-4">1 kW</td>
-                            <td class="py-3 px-4">120</td>
-                            <td class="py-3 px-4">Rs. 1,000</td>
-                            <td class="py-3 px-4">Rs. 338</td>
-                            <td class="py-3 px-4">Rs. 8,000</td>
-                            <td class="py-3 px-4">Rs. 30,000</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-3 px-4">2 kW</td>
-                            <td class="py-3 px-4">240</td>
-                            <td class="py-3 px-4">Rs. 2,000</td>
-                            <td class="py-3 px-4">Rs. 333</td>
-                            <td class="py-3 px-4">Rs. 20,000</td>
-                            <td class="py-3 px-4">Rs. 60,000</td>
-                        </tr>
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-3 px-4">3 kW</td>
-                            <td class="py-3 px-4">360</td>
-                            <td class="py-3 px-4">Rs. 3,000</td>
-                            <td class="py-3 px-4">Rs. 293</td>
-                            <td class="py-3 px-4">Rs. 32,400</td>
-                            <td class="py-3 px-4">Rs. 78,000</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Bank Logos Section -->
-    <div class="bank-section mt-8">
-        <h3 class="text-xl font-bold mb-4 text-gray-800">Financial Support</h3>
-        <p class="text-gray-700 mb-4">Bank loans will be provided at low interest rates for this scheme</p>
-        <div class="bank-logos flex flex-wrap justify-center items-center gap-8">
-            <img src="./images/bank-logos/sbi.png" alt="SBI" class="bank-logo h-12 object-contain filter hover:brightness-110 transition-all duration-300">
-            <img src="./images/bank-logos/union-bank.png" alt="Union Bank" class="bank-logo h-12 object-contain filter hover:brightness-110 transition-all duration-300">
-            <img src="./images/bank-logos/indian-bank.png" alt="Indian Bank" class="bank-logo h-12 object-contain filter hover:brightness-110 transition-all duration-300">
-            <img src="./images/bank-logos/bob.png" alt="Bank of Baroda" class="bank-logo h-12 object-contain filter hover:brightness-110 transition-all duration-300">
-        </div>
-    </div>
-        </div>
-    </section>
-
-    <section id="om" class="py-20 bg-gray-100">
+    <section id="om" class="py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Operation & Maintenance and Manpower Services</h2>
             <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
@@ -288,7 +198,7 @@
 
     
 
-    <section id="values" class="py-20 bg-gray-100">
+    <section id="values" class="py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our Core Values</h2>
             <div class="values-grid grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -311,8 +221,8 @@
         </div>
     </section>
 
-    <!-- Contact section content -->
-    <section id="contact" class="py-20 bg-gray-100">
+    <!-- Contact section without gray background -->
+    <section id="contact" class="py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
             <div class="contact-grid grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -362,5 +272,6 @@
     
     <script src="./components/navbar/navbar.js" type="module"></script>
     <script src="./script.js" type="module"></script>
+    <script src="./scroll-animations.js"></script>
 </body>
 </html>

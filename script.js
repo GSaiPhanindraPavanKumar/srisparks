@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Fix footer logo path
                 const footerLogo = footerContainer.querySelector('.footer-logo img');
                 if (footerLogo) {
-                    footerLogo.src = parentLevel + 'images/logo/logo.png';
+                    footerLogo.src = parentLevel + 'images/logo/logo1.png';
                 }
                 
                 // Initialize footer functionality
@@ -218,12 +218,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize all effects
     function initializeAll() {
-        // Initialize carousel
+        // Initialize carousel with higher priority and force visibility
         const track = document.querySelector('.carousel-track');
         const slides = document.querySelectorAll('.carousel-slide');
+        const carouselContainer = document.querySelector('.carousel-container');
         
-        if (track && slides.length > 0) {
+        if (track && slides.length > 0 && carouselContainer) {
             let currentIndex = 0;
+
+            // Set explicit visibility
+            carouselContainer.style.display = 'block';
+            carouselContainer.style.opacity = '1';
+            carouselContainer.style.visibility = 'visible';
 
             function updateCarousel() {
                 const offset = -currentIndex * 25;
@@ -237,9 +243,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Set initial position
             updateCarousel();
-
+            
             // Auto advance slides
             setInterval(nextSlide, 5000);
+            
+            // Force carousel visibility again after a delay
+            setTimeout(() => {
+                carouselContainer.style.display = 'block';
+                carouselContainer.style.opacity = '1';
+            }, 500);
         }
 
         // Initialize particles first if available

@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--text-color);
+  background-color: #ffffff; /* Ensure body has a white background */
 }
 
 header {
@@ -113,6 +114,7 @@ section {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #ffffff; /* Ensure sections have a white background */
 }
 
 .hero-section {
@@ -724,14 +726,26 @@ tr:hover {
     }
 }
 
+/* Fix carousel container styles for better visibility */
+.carousel-wrapper {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .carousel-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    z-index: 0;
+    z-index: 10;
+    opacity: 1 !important;
+    display: block !important;
 }
 
 .carousel-track {
@@ -754,8 +768,106 @@ tr:hover {
     will-change: transform;
 }
 
-/* Remove any existing hero-section background styles */
+/* Hero section styles */
 .hero-section {
     min-height: 100vh;
     background: none !important;
+    position: relative;
+    isolation: isolate; /* Create stacking context */
+}
+
+/* Enhanced animations for scrolling effects */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Scroll animation classes */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-fade-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-fade-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease-out;
+}
+
+.scroll-pop {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Enhanced icon hover effects */
+.feature-card i, .service-card i, .value-card i {
+  transition: all 0.5s ease;
+}
+
+.feature-card:hover i, .service-card:hover i, .value-card:hover i {
+  transform: scale(1.2) rotate(10deg);
+  color: var(--secondary-color);
+}
+
+/* Enhanced table row hover effects */
+tbody tr {
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+tbody tr:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(240,247,255,1));
+}
+
+/* Enhanced card hover effects */
+.feature-card, .service-card, .project-card, .value-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.feature-card:hover, .service-card:hover, .project-card:hover, .value-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced list items hover effects */
+.list-disc li, .service-content li, ul.list-none li {
+  transition: all 0.3s ease;
+}
+
+.list-disc li:hover, .service-content li:hover, ul.list-none li:hover {
+  transform: translateX(5px);
+  color: var(--primary-color);
 }

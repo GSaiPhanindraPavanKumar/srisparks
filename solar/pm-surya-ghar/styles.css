@@ -447,6 +447,212 @@ tbody td:nth-child(5), tbody td:nth-child(6) {
     box-shadow: 0 15px 30px rgba(255, 153, 0, 0.4);
 }
 
+/* Enhanced Financial Support Section Styling */
+.financial-support-container {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    border-radius: 20px;
+    margin: 4rem auto 1rem;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 86, 179, 0.1);
+}
+
+.financial-support-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/pattern-bg.svg');
+    background-size: cover;
+    opacity: 0.03;
+    z-index: 0;
+}
+
+.financial-support-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.support-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, #0074cc 100%);
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.3);
+}
+
+.support-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.financial-support-header h3 {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.financial-support-header p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Bank Features */
+.bank-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.bank-feature {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid var(--secondary);
+}
+
+.bank-feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.bank-feature i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.bank-feature h4 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.bank-feature p {
+    color: #666;
+}
+
+/* Bank Partners */
+.bank-partners {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.bank-partners h4 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.bank-partners h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+.bank-logos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.bank-logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.bank-logo-item:hover {
+    transform: translateY(-5px);
+}
+
+.bank-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(70%);
+    transition: all 0.3s ease;
+}
+
+.bank-logo-item:hover .bank-logo {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.bank-logo-item span {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Loan CTA */
+.loan-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.loan-cta p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.loan-btn {
+    background: linear-gradient(135deg, var(--secondary) 0%, #ff6a00 100%);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(255, 153, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.loan-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 153, 0, 0.4);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-section {
@@ -480,5 +686,21 @@ tbody td:nth-child(5), tbody td:nth-child(6) {
     
     .cta-title {
         font-size: 1.8rem;
+    }
+    
+    .financial-support-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .bank-features {
+        gap: 1.5rem;
+    }
+    
+    .bank-feature {
+        padding: 1.5rem;
+    }
+    
+    .bank-logo {
+        height: 50px;
     }
 }

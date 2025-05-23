@@ -378,33 +378,58 @@ footer {
     box-shadow: 0 10px 20px rgba(0, 86, 179, 0.4);
 }
 
-/* Hero icons wrapper styling (similar to PM Surya Ghar) */
+/* Hero icons wrapper styling - improved alignment */
 .hero-icons-wrapper {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin: 2rem auto;
-    max-width: 700px !important;
+    margin: 2.5rem auto;
+    max-width: 800px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
-/* Icons animation and styling */
+/* Better icon alignment */
+.hero-icons-wrapper > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icon styling */
 .hero-icons-wrapper i {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
     transition: transform 0.3s ease;
+    margin-bottom: 1rem;
 }
 
 .hero-icons-wrapper i:hover {
     transform: translateY(-5px);
 }
 
+/* Math operators (+, =) */
 .hero-icons-wrapper .text-4xl {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+/* Fix text alignment */
+.hero-icons-wrapper p {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: nowrap;
 }
 
 /* Responsive adjustments */
@@ -430,6 +455,22 @@ footer {
     .cta-title {
         font-size: 1.8rem;
     }
+    
+    .hero-icons-wrapper {
+        padding: 1.5rem 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .hero-icons-wrapper > div {
+        margin: 0.5rem 0;
+    }
+    
+    .hero-icons-wrapper .text-4xl {
+        margin: 0.5rem;
+        transform: rotate(90deg);
+    }
 }
 
 @media (max-width: 640px) {
@@ -439,6 +480,11 @@ footer {
     }
     
     .hero-icons-wrapper .text-4xl {
-        padding: 0.5rem 0;
+        transform: rotate(0);
+        margin: 0.25rem 0;
+    }
+    
+    .hero-icons-wrapper i {
+        font-size: 3rem !important;
     }
 }

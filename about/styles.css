@@ -1,0 +1,274 @@
+/* About page specific styles */
+:root {
+    --primary: #0056b3;
+    --secondary: #ff9900;
+    --accent: #00cc66;
+    --light: #f0f7ff;
+}
+
+/* Hero section styling */
+.about-hero-section {
+    background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
+    padding-top: 140px !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/solar-pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.about-hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Banner image container styling */
+.about-banner-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+}
+
+.about-banner-container img {
+    width: 100%;
+    height: 3.87cm; /* Set height as specified - 3.87 cm */
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Gradient headings */
+.gradient-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gradient-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    border-radius: 2px;
+}
+
+/* Image container styling */
+.about-image-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.about-image-container:hover img {
+    transform: scale(1.03);
+}
+
+/* Stats box styling */
+.stat-box {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), #0074cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    display: block;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Vision & Mission cards */
+.vision-mission-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.vision-mission-card:hover {
+    transform: translateY(-10px);
+}
+
+.icon-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.vision-mission-card:nth-child(1) .icon-container {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    box-shadow: 0 10px 20px rgba(0, 114, 255, 0.2);
+}
+
+.vision-mission-card:nth-child(2) .icon-container {
+    background: linear-gradient(135deg, #ff9900, #ff6a00);
+    box-shadow: 0 10px 20px rgba(255, 106, 0, 0.2);
+}
+
+.icon-container i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+/* Promoter Card Styling */
+.promoter-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    padding: 3rem;
+}
+
+/* Improved text content alignment */
+.text-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Improved alignment for gradient heading */
+.gradient-heading {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.gradient-heading::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Improved stat boxes for 3-column layout */
+.stat-box {
+    text-align: center;
+    padding: 1.8rem 1rem;
+}
+
+/* Improve vision-mission section alignment */
+.vision-mission-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 2rem;
+}
+
+.vision-mission-card h2 {
+    margin-top: 0.5rem;
+}
+
+/* Improve promoter section alignment */
+.promoter-card {
+    padding: 3rem;
+}
+
+/* Enhanced core values alignment */
+.value-card {
+    padding: 2.5rem 2rem;
+}
+
+/* Make section padding more consistent */
+section {
+    padding: 5rem 0;
+}
+
+section:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* CTA button styling */
+.cta-button {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 153, 0, 0.3);
+}
+
+.cta-button:hover {
+    background: #ff8800;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 153, 0, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-hero-section {
+        padding-top: 100px !important;
+    }
+    
+    .about-banner-container img {
+        height: auto;
+        min-height: 3.87cm;
+    }
+    
+    .stat-box {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .vision-mission-card,
+    .value-card,
+    .choose-us-card {
+        margin-bottom: 2rem;
+    }
+}
