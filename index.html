@@ -10,78 +10,78 @@
     <link rel="stylesheet" href="./components/footer/footer.css">
     <link rel="icon" href="images/favicon/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon/favicon.png">
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .gradient-text {
-            background: linear-gradient(45deg, #0056b3, #00a859);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="/carousel.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./style-additions.css">
 </head>
 <body class="font-sans">
     <!-- Include Navbar -->
     <div id="navbar-container"></div>
 
-    <section id="home" class="hero-section relative overflow-hidden">
-        <!-- Particles Container -->
-        <div id="particles-js" class="absolute inset-0 z-20"></div>
-
-        <!-- Hero Carousel - Increased z-index and fixed visibility -->
-        <div class="absolute inset-0 z-10 carousel-wrapper">
-            <div class="carousel-container" style="display: block; opacity: 1;">
-                <div class="carousel-track">
-                    <div class="carousel-slide" style="background-image: url('./images/hero/slide1.jpg')"></div>
-                    <div class="carousel-slide" style="background-image: url('./images/hero/slide2.jpg')"></div>
-                    <div class="carousel-slide" style="background-image: url('./images/hero/slide3.jpg')"></div>
-                    <div class="carousel-slide" style="background-image: url('./images/hero/slide4.jpg')"></div>
-                </div>
+    <div class="carousel-container relative">
+        <!-- Carousel Slides -->
+        <div class="slide" style="background-image: url('/images/hero/slide1.jpg')">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-hero-text">Welcome to SriSparks Infra</h2>
+                <h1 class="slide-title">Building Tomorrow's Infrastructure Today</h1>
+                <p class="slide-subtitle">Innovative engineering solutions for sustainable development</p>
+                <a href="#services" class="mt-6 px-8 py-3 bg-gradient-to-r from-blue-600 to-green-500 text-white rounded-full font-bold transition-all duration-300 hover:from-green-500 hover:to-blue-600 hover:scale-105 hover:shadow-lg">Explore Our Services</a>
             </div>
         </div>
-        
+        <div class="slide" style="background-image: url('/images/hero/slide2.jpg')">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-hero-text">Welcome to SriSparks Infra</h2>
+                <h1 class="slide-title">Excellence in Construction Engineering</h1>
+                <p class="slide-subtitle">Delivering quality projects with precision and expertise</p>
+                <a href="#projects" class="mt-6 px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full font-bold transition-all duration-300 hover:from-red-500 hover:to-orange-500 hover:scale-105 hover:shadow-lg">View Our Projects</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('/images/hero/slide3.jpg')">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-hero-text">Welcome to SriSparks Infra</h2>
+                <h1 class="slide-title">Sustainable Infrastructure Solutions</h1>
+                <p class="slide-subtitle">Creating environmentally responsible structures for future generations</p>
+                <a href="#about" class="mt-6 px-8 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-full font-bold transition-all duration-300 hover:from-teal-500 hover:to-green-500 hover:scale-105 hover:shadow-lg">About Our Company</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('/images/hero/slide4.jpg')">
+            <div class="slide-content">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-hero-text">Welcome to SriSparks Infra</h2>
+                <h1 class="slide-title">Transforming Visions into Reality</h1>
+                <p class="slide-subtitle">From concept to completion, we bring your infrastructure dreams to life</p>
+                <a href="#contact" class="mt-6 px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-full font-bold transition-all duration-300 hover:from-blue-500 hover:to-purple-600 hover:scale-105 hover:shadow-lg">Contact Us Today</a>
+            </div>
+        </div>
+
         <!-- Overlay -->
-        <div class="absolute inset-0 bg-black/60 z-30"></div>
-        
-        <!-- Content -->
-        <div class="relative z-40 container mx-auto px-4 h-screen flex flex-col justify-center items-center text-center text-white">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-                Welcome to SriSparks Infra
-            </h1>
-            <p class="text-xl md:text-3xl font-semibold mb-8 animate-slide-up">
-                INNOVATIVE INFRASTRUCTURE SOLUTIONS
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">EPC</span>
-                <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">SOLAR</span>
-                <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">O&M</span>
-                <span class="px-6 py-2 rounded-full border-2 border-white/50 backdrop-blur-sm">MANPOWER</span>
+        <div class="carousel-overlay"></div>
+
+        <!-- Carousel Controls (arrows and dots) -->
+        <div class="carousel-controls">
+            <button class="carousel-button prev-button" aria-label="Previous slide">←</button>
+            <button class="carousel-button next-button" aria-label="Next slide">→</button>
+            <div class="carousel-dots">
+                <span class="dot" aria-label="Go to slide 1"></span>
+                <span class="dot" aria-label="Go to slide 2"></span>
+                <span class="dot" aria-label="Go to slide 3"></span>
+                <span class="dot" aria-label="Go to slide 4"></span>
             </div>
         </div>
-    </section>
+    </div>
 
+    <!-- Enhanced About Section -->
     <section id="about" class="py-20">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Us</h2>
-            <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
-                SriSparks Infra Pvt Ltd is a vibrant startup in India promoted by Singapore’s M/s Rishi Engineering PTE Ltd. We offer innovative and secure infrastructure solutions, delivering unmatched reliability, scalability, and sustainability. Our Singapore-based partner, Rishi Engineering, has been providing engineering contracting services since 2016, with a strong background in project management and execution.
-            </p>
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">WHO WE ARE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto"></div>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-xl">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                    SriSparks Infra Pvt Ltd is a vibrant startup in India promoted by Singapore's M/s Rishi Engineering PTE Ltd. We offer innovative and secure infrastructure solutions, delivering unmatched reliability, scalability, and sustainability. Our Singapore-based partner, Rishi Engineering, has been providing engineering contracting services since 2016, with a strong background in project management and execution.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -221,10 +221,14 @@
         </div>
     </section>
 
-    <!-- Contact section without gray background -->
+    <!-- Enhanced Contact Section -->
     <section id="contact" class="py-20">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold mb-4">REACH OUT</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
+            </div>
             <div class="contact-grid grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="contact-info bg-white rounded-lg shadow-md p-6">
                     <h3 class="text-xl font-semibold mb-4"><i class="fas fa-address-card mr-2"></i> Contact Details</h3>
@@ -254,7 +258,7 @@
                                 style="border:0;" 
                                 allowfullscreen="" 
                                 loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade"
+                                aria-label="SriSparks Location Map"
                                 class="w-full h-full"
                             ></iframe>
                         </div>
@@ -272,6 +276,8 @@
     
     <script src="./components/navbar/navbar.js" type="module"></script>
     <script src="./script.js" type="module"></script>
+    <script src="./carousel.js" type="module"></script>
+    
     <script src="./scroll-animations.js"></script>
 </body>
 </html>

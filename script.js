@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add hover effect
         scrollBtn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-            this.style.boxShadow = '0 5px 15px rgba(255, 153, 0, 0.6)';
+          this.style.transform = 'translateY(-8px)'; // Increased hover lift
+          this.style.boxShadow = '0 8px 20px rgba(255, 153, 0, 0.7)'; // Stronger shadow
         });
         
         scrollBtn.addEventListener('mouseleave', function() {
@@ -175,26 +175,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll animations with null checks
     function initScrollAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      const observerOptions = {
+        threshold: 0.2, // Increased threshold for earlier animation trigger
+        rootMargin: '0px 0px -30px 0px' // Adjusted margin for smoother animations
+      };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting && entry.target) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+              }
+          });
+      }, observerOptions);
 
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        if (animatedElements.length > 0) {
-            animatedElements.forEach((element) => {
-                observer.observe(element);
-            });
-        }
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      if (animatedElements.length > 0) {
+          animatedElements.forEach((element) => {
+              observer.observe(element);
+          });
+      }
     }
 
     // Add dynamic card hover effects with null checks
@@ -219,40 +219,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all effects
     function initializeAll() {
         // Initialize carousel with higher priority and force visibility
-        const track = document.querySelector('.carousel-track');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const carouselContainer = document.querySelector('.carousel-container');
-        
-        if (track && slides.length > 0 && carouselContainer) {
+        function initializeCarousel() {
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
             let currentIndex = 0;
 
-            // Set explicit visibility
-            carouselContainer.style.display = 'block';
-            carouselContainer.style.opacity = '1';
-            carouselContainer.style.visibility = 'visible';
+            if (track && slides.length > 0) {
+                function updateCarousel() {
+                    const offset = -currentIndex * 25; // Move by 25% for each slide
+                    track.style.transform = `translateX(${offset}%)`;
+                }
 
-            function updateCarousel() {
-                const offset = -currentIndex * 25;
-                track.style.transform = `translateX(${offset}%)`;
-            }
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
 
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % slides.length;
+                // Set initial position
                 updateCarousel();
-            }
 
-            // Set initial position
-            updateCarousel();
-            
-            // Auto advance slides
-            setInterval(nextSlide, 5000);
-            
-            // Force carousel visibility again after a delay
-            setTimeout(() => {
-                carouselContainer.style.display = 'block';
-                carouselContainer.style.opacity = '1';
-            }, 500);
+                // Auto-advance slides every 5 seconds
+                setInterval(nextSlide, 5000);
+            }
         }
+
+        // Initialize carousel
+        initializeCarousel();
 
         // Initialize particles first if available
         if (window.particlesJS) {
