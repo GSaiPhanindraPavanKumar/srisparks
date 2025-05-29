@@ -1,3 +1,6 @@
+// Import the navbar scroll behavior
+import './navbar-scroll.js';
+
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
