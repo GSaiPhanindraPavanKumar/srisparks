@@ -989,7 +989,112 @@ tbody td:nth-child(5), tbody td:nth-child(6) {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive adjustments */
+/* Installation Carousel Styles */
+.installation-carousel-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.installation-carousel {
+    position: relative;
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    background-color: #f1f1f1;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.installation-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+}
+
+/* Fixed carousel control positioning */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+.carousel-control:hover {
+    background: #f0f7ff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control i {
+    font-size: 1rem;
+}
+
+/* Image loading spinner */
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+.installation-image.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #0056b3;
+    border-radius: 50%;
+    animation: spinner 0.8s linear infinite;
+}
+
+/* Mobile optimizations */
 @media (max-width: 768px) {
     .hero-section {
         padding-top: 120px !important;
@@ -1035,4 +1140,26 @@ tbody td:nth-child(5), tbody td:nth-child(6) {
     .bank-features {
         gap: 2rem;
     }
+    
+    .installation-image img {
+        height: 300px;
+    }
+}
+
+.container {
+  max-width: 1200px;
+}
+
+/* Scheme highlight emphasis */
+.scheme-highlight {
+    color: #4caf50;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    animation: schemePulsate 2s infinite;
+}
+
+@keyframes schemePulsate {
+    0% { text-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+    100% { text-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
 }
