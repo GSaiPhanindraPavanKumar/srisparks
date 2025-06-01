@@ -1,7 +1,6 @@
 .navbar {
     /*background: linear-gradient(to right, #0056b3, #004080);*/
     transition: all 0.3s ease;
-    top: 40px; /* Height of the WhatsApp bar */
 }
 
 .navbar.scrolled {
@@ -65,14 +64,6 @@
 @media (max-width: 768px) {
     .nav-link::after {
         display: none;
-    }
-    
-    .whatsapp-contact-bar {
-        font-size: 0.8rem;
-    }
-    
-    .navbar {
-        top: 36px; /* Slightly smaller on mobile */
     }
 }
 
@@ -139,28 +130,18 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* WhatsApp Contact Bar */
-.whatsapp-contact-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 51;
-    font-size: 0.9rem;
-}
-
-/* Adjust navbar position to account for WhatsApp bar */
-.navbar {
-    top: 40px; /* Height of the WhatsApp bar */
-}
-
-/* Responsive adjustments */
+/* Mobile dropdown adjustments */
 @media (max-width: 768px) {
-    .whatsapp-contact-bar {
-        font-size: 0.8rem;
+    .dropdown-content,
+    .sub-dropdown-content {
+        position: static;
+        display: none;
+        background: rgba(0, 0, 0, 0.1);
+        padding-left: 1rem;
     }
-    
-    .navbar {
-        top: 36px; /* Slightly smaller on mobile */
+
+    .dropdown.active .dropdown-content,
+    .sub-dropdown.active .sub-dropdown-content {
+        display: block;
     }
 }
