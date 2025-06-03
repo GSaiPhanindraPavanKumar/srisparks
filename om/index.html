@@ -12,6 +12,7 @@
     <link rel="icon" href="../images/favicon/favicon.png">
     <link rel="apple-touch-icon" href="../images/favicon/favicon.png">
     <link rel="stylesheet" href="../style-additions.css">
+    <link rel="stylesheet" href="../scrolltotop/scroll-to-top.css">
     <link rel="stylesheet" href="./om.css">
 </head>
 <body class="font-sans" style="margin: 0; padding: 0; width: 100%;">
@@ -90,7 +91,7 @@
         </div>
     </section>
     
-    <!-- Enhanced O&M Services Section with fixed spacing and structure -->
+    <!-- O&M Services Section with proper card layout -->
     <section class="py-16 services-section w-full">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -99,84 +100,117 @@
                 <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Comprehensive maintenance solutions for your infrastructure needs with dedicated support and expert technicians</p>
             </div>
             
-            <!-- Fixed grid layout with better spacing -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 services-grid-container">
-                <!-- O&M Services Column with enhanced cards -->
-                <div class="om-services-column">
-                    <div class="service-card bg-white p-6 rounded-lg shadow-md mb-8"> <!-- Increased bottom margin -->
-                        <div class="card-shimmer"></div>
-                        <div class="flex items-center mb-4">
-                            <div class="icon-circle bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-bolt text-blue-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Electrical Systems</h3>
+            <!-- Service Cards Grid - All 3 services in a row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Electrical Systems Card -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="card-shimmer"></div>
+                    <div class="flex items-center mb-4">
+                        <div class="icon-circle bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-bolt text-blue-600 text-xl"></i>
                         </div>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Substations up to 220kV</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Power Plants, Process Plants</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Distribution Networks</li>
-                        </ul>
-                        <div class="service-tag">Electrical</div>
+                        <h3 class="text-xl font-bold">Electrical Systems</h3>
                     </div>
-                    
-                    <!-- Added specific height constraint -->
-                    <div class="service-card bg-white p-6 rounded-lg shadow-md mb-8"> <!-- Increased bottom margin -->
-                        <div class="card-shimmer"></div>
-                        <div class="flex items-center mb-4">
-                            <div class="icon-circle bg-green-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-lightbulb text-green-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Facility Management</h3>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Lighting & HVAC Maintenance</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Single Facility Management (Housekeeping, Electrical, Civil)</li>
-                        </ul>
-                        <div class="service-tag green">Facility</div>
-                    </div>
+                    <ul class="list-disc list-inside text-gray-700 ml-4">
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Substations up to 220kV</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Power Plants, Process Plants</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Distribution Networks</li>
+                    </ul>
+                    <!-- <div class="service-tag">Electrical</div> -->
                 </div>
                 
-                <!-- Manpower Services Column with enhanced visuals -->
-                <div class="manpower-services-column">
-                    <div class="service-card bg-white p-6 rounded-lg shadow-md mb-8"> <!-- Increased bottom margin -->
-                        <div class="card-shimmer"></div>
-                        <div class="flex items-center mb-4">
-                            <div class="icon-circle bg-orange-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-users-cog text-orange-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold">Manpower Services</h3>
+                <!-- Facility Management Card -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="card-shimmer"></div>
+                    <div class="flex items-center mb-4">
+                        <div class="icon-circle bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-lightbulb text-green-600 text-xl"></i>
                         </div>
-                        <ul class="list-disc list-inside text-gray-700 ml-4">
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Manpower Outsourcing</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Skilled Technicians & Engineers</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Workforce Training & Development</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Project-Based Staffing Solutions</li>
-                        </ul>
-                        <div class="service-tag orange">Manpower</div>
+                        <h3 class="text-xl font-bold">Facility Management</h3>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 ml-4">
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Lighting & HVAC Maintenance</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Single Facility Management (Housekeeping, Electrical, Civil)</li>
+                    </ul>
+                    <!-- <div class="service-tag green">Facility</div> -->
+                </div>
+                
+                <!-- Manpower Services Card -->
+                <div class="service-card bg-white p-6 rounded-lg shadow-md">
+                    <div class="card-shimmer"></div>
+                    <div class="flex items-center mb-4">
+                        <div class="icon-circle bg-orange-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-users-cog text-orange-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Manpower Services</h3>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-700 ml-4">
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Manpower Outsourcing</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Skilled Technicians & Engineers</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Workforce Training & Development</li>
+                        <li class="mb-2"><i class="fas fa-check text-primary mr-2"></i>Project-Based Staffing Solutions</li>
+                    </ul>
+                    <!-- <div class="service-tag orange">Manpower</div> -->
+                </div>
+            </div>
+            
+            <!-- Why Choose Card - As a standalone section -->
+            <div class="max-w-4xl mx-auto">
+                <div class="p-8 rounded-xl bg-gradient-to-r from-blue-600 to-blue-800 text-white why-choose-card">
+                    <div class="sparkles"></div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Why Choose Our O&M Services?</h3>
+                        <div class="w-16 h-1 bg-green-300 mx-auto"></div>
                     </div>
                     
-                    <!-- Fixed why-choose card -->
-                    <div class="p-6 rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 text-white why-choose-card mb-8"> <!-- Increased bottom margin -->
-                        <div class="sparkles"></div>
-                        <h3 class="text-xl font-bold mb-4">Why Choose Our O&M Services?</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle mt-1 mr-3 text-green-300"></i>
-                                <span>24/7 Support</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle mt-1 mr-3 text-green-300"></i>
-                                <span>Preventive & Corrective Maintenance Programs</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle mt-1 mr-3 text-green-300"></i>
-                                <span>Highly Trained Technical Staff</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle mt-1 mr-3 text-green-300"></i>
-                                <span>State-of-the-Art Diagnostics Tools</span>
-                            </li>
-                        </ul>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="why-choose-item">
+                            <div class="flex items-start">
+                                <div class="mt-1 mr-4 text-green-300 check-icon-container">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">24/7 Emergency Response</h4>
+                                    <p class="text-blue-100">Round-the-clock support for all critical infrastructure</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="why-choose-item">
+                            <div class="flex items-start">
+                                <div class="mt-1 mr-4 text-green-300 check-icon-container">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Preventive Maintenance</h4>
+                                    <p class="text-blue-100">Proactive maintenance programs to prevent failures</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="why-choose-item">
+                            <div class="flex items-start">
+                                <div class="mt-1 mr-4 text-green-300 check-icon-container">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Expert Technical Staff</h4>
+                                    <p class="text-blue-100">Highly trained professionals with industry certifications</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="why-choose-item">
+                            <div class="flex items-start">
+                                <div class="mt-1 mr-4 text-green-300 check-icon-container">
+                                    <i class="fas fa-check-circle text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2">Advanced Diagnostics</h4>
+                                    <p class="text-blue-100">State-of-the-art tools for accurate problem detection</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,7 +219,7 @@
     
 
     <!-- Clear section separator -->
-    <div class="section-separator w-full h-16"></div>
+    <!-- <div class="section-separator w-full h-8"></div> -->
 
     <!-- Enhanced CTA Section with proper spacing -->
     <section class="cta-section py-10 text-white text-center w-full">
@@ -204,52 +238,13 @@
         </div>
     </section>
 
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-top fixed bottom-4 right-4 bg-primary text-white rounded-full p-3 shadow-md hover:bg-secondary transition-all duration-300">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
     <!-- Footer Component -->
     <div id="footer-container" data-parent-level="../"></div>
     
     <script src="../components/navbar/navbar.js" type="module"></script>
     <script src="../script.js" type="module"></script>
     <script src="../scroll-animations.js"></script>
-    <script>
-        // Animation for stat counters
-        document.addEventListener('DOMContentLoaded', function() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            statNumbers.forEach(stat => {
-                observer.observe(stat);
-            });
-            
-            function animateCounter(element) {
-                const target = parseInt(element.getAttribute('data-count'));
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        element.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.floor(current);
-                    }
-                }, 16);
-            }
-        });
-    </script>
+    <script src="../scrolltotop/scroll-to-top.js"></script>
+    <script src="./om.js"></script>
 </body>
 </html>

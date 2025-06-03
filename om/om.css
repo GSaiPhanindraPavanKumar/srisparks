@@ -433,90 +433,77 @@
     padding: 0;
 }
 
-/* Fix service cards to ensure consistent sizing */
+/* Service cards with uniform heights */
 .service-card {
+    position: relative;
+    z-index: 2;
     height: 100%;
+    min-height: 320px; /* Ensure minimum height for all cards */
     display: flex;
     flex-direction: column;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border-radius: 20px !important;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
-    border: none !important;
-    position: relative;
     margin-bottom: 1.5rem;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    z-index: 1;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    overflow: hidden;
+    padding: 1.5rem !important;
 }
 
-/* Badge for section header */
-.badge-accent {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: linear-gradient(to right, #e1f5fe, #b3e5fc);
-    color: #0277bd;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-    box-shadow: 0 3px 10px rgba(2, 119, 189, 0.1);
-}
-
-/* Enhanced service cards with shimmer effect */
-/* Card shimmer effect */
-.card-shimmer {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.2) 50%,
-        rgba(255,255,255,0) 100%);
-    z-index: 2;
-    animation: shimmer 5s infinite;
-    pointer-events: none;
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(200%); }
-    100% { transform: translateX(200%); }
-}
-
-/* Colorful service tags */
-.service-tag {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #1e88e5;
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    box-shadow: 0 3px 10px rgba(30, 136, 229, 0.3);
-}
-
-.service-tag.green {
-    background: #00c853;
-    box-shadow: 0 3px 10px rgba(0, 200, 83, 0.3);
-}
-
-.service-tag.orange {
-    background: #ff9100;
-    box-shadow: 0 3px 10px rgba(255, 145, 0, 0.3);
-}
-
-/* Why choose card sparkles */
+/* Enhanced Why Choose Card */
 .why-choose-card {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 20px 50px rgba(21, 101, 192, 0.3) !important;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6) !important;
+    transform: none !important;
+    z-index: 3;
+    border-radius: 1.5rem !important;
+    margin: 4rem auto !important;
+    padding: 2.5rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1100px;
 }
 
+/* Fix spacing between Why Choose and CTA sections */
+
+/* Adjust Why Choose card bottom margin */
+.why-choose-card {
+    margin-bottom: 0 !important; /* Remove bottom margin */
+}
+
+/* Make section separator smaller */
+.section-separator {
+    height: 2rem !important; /* Reduce from original height */
+    position: relative;
+    z-index: 1;
+}
+
+/* Remove the decorative element in section separator */
+.section-separator::after {
+    display: none; /* Remove the line that adds extra visual height */
+}
+
+/* Adjust services section padding */
+.services-section {
+    padding-bottom: 2rem !important; /* Reduce bottom padding */
+}
+
+/* Make CTA section padding smaller at the top */
+.cta-section {
+    padding-top: 2rem !important; /* Reduce top padding */
+}
+
+/* Add a decorative pattern to Why Choose section */
+.why-choose-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 0;
+}
+
+/* Enhanced sparkles effect for Why Choose card */
 .sparkles {
     position: absolute;
     top: 0;
@@ -525,373 +512,330 @@
     height: 100%;
     z-index: 0;
     background-image: 
-        radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
-    background-size: 20px 20px, 30px 30px;
-    animation: sparkle 3s linear infinite;
+        radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 2px);
+    background-size: 30px 30px, 50px 50px;
+    animation: sparkle 20s linear infinite;
 }
 
 @keyframes sparkle {
     0% { background-position: 0 0, 0 0; }
-    100% { background-position: 20px 20px, -30px -30px; }
+    100% { background-position: 100px 100px, -100px -100px; }
 }
 
-/* New stats section */
-.stats-section {
-    background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
-    padding: 4rem 2rem;
+/* Enhanced item styles in Why Choose section */
+.why-choose-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    padding: 1.5rem !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: hidden;
+    z-index: 2;
 }
 
-.stat-card {
-    background: white;
-    padding: 2.5rem 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+.why-choose-item:hover {
+    transform: translateY(-8px) !important;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.stat-card::before {
+/* Make headings in Why Choose more vibrant */
+.why-choose-item h4 {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Make paragraphs in Why Choose more readable */
+.why-choose-item p {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced check icons */
+.check-icon-container {
+    background: rgba(52, 211, 153, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem !important;
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+}
+
+.check-icon-container i {
+    font-size: 1.8rem !important;
+    color: #4ade80 !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Add more colorful service cards */
+.service-card {
+    border: none !important;
+    background: linear-gradient(145deg, #ffffff, #f9fafb) !important;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.02) !important;
+    overflow: hidden !important;
+    transform-origin: center !important;
+    border-radius: 1rem !important;
+}
+
+/* Unique service card colors */
+.service-card:first-child {
+    border-top: 5px solid #3b82f6 !important;
+}
+
+.service-card:nth-child(2) {
+    border-top: 5px solid #10b981 !important;
+}
+
+.service-card:nth-child(3) {
+    border-top: 5px solid #f59e0b !important;
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.02) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12), 0 0 0 2px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* Add decorative elements to service cards */
+.service-card::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    bottom: -80px;
+    right: -80px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.08);
     z-index: 0;
+    transition: all 0.5s ease;
 }
 
-.stat-card:nth-child(2)::before {
-    background: linear-gradient(90deg, #f83600, #f9d423);
+.service-card:nth-child(2)::after {
+    background: rgba(16, 185, 129, 0.08);
 }
 
-.stat-card:nth-child(3)::before {
-    background: linear-gradient(90deg, #11998e, #38ef7d);
+.service-card:nth-child(3)::after {
+    background: rgba(245, 158, 11, 0.08);
 }
 
-.stat-card:nth-child(4)::before {
-    background: linear-gradient(90deg, #834d9b, #d04ed6);
+.service-card:hover::after {
+    transform: scale(1.5);
 }
 
-.stat-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-}
-
-.stat-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #1a56db;
-    background: linear-gradient(45deg, #1e88e5, #64b5f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-card:nth-child(2) .stat-icon {
-    background: linear-gradient(45deg, #ff9800, #ffca28);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-card:nth-child(3) .stat-icon {
-    background: linear-gradient(45deg, #4caf50, #8bc34a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-card:nth-child(4) .stat-icon {
-    background: linear-gradient(45deg, #9c27b0, #e040fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.stat-number {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    color: #1e293b;
-    line-height: 1;
-}
-
-.stat-label {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #64748b;
-}
-
-/* Compact CTA Section */
-.cta-section {
-    width: 100% !important;
-    margin: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa) !important;
-    padding: 3rem 2rem;
-    position: relative;
-    overflow: hidden;
-    border-radius: 0;
-}
-
-.cta-content {
-    background: rgba(31, 41, 55, 0.3);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255,255,255,0.1);
-    display: inline-block;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Enhance CTA button */
-.cta-button {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background: linear-gradient(45deg, #f97316, #fb923c);
-    color: white;
-    font-weight: 700;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
-    position: relative;
-    overflow: hidden;
-    border: none;
-}
-
-/* Button shine effect */
-.button-shine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: rotate(30deg);
-    animation: button-shine 4s infinite;
-}
-
-@keyframes button-shine {
-    0% { transform: translateX(-100%) rotate(30deg); }
-    20%, 100% { transform: translateX(100%) rotate(30deg); }
-}
-
-.cta-button:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(249, 115, 22, 0.5);
-}
-
-/* Fix for section alignment and intersection issues */
-
-/* Services section with proper spacing and containment */
-.services-section {
-    padding: 5rem 0;
-    margin: 0;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    background: linear-gradient(135deg, rgba(245, 247, 250, 0.95), rgba(240, 249, 255, 0.95)) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Add visual separation */
-}
-
-/* Ensure service cards are contained within their section */
-.services-section .service-card {
-    height: 100%;
-    max-width: 100%;
-    z-index: 2; /* Ensure proper stacking */
-}
-
-/* Fix for CTA section to prevent intersection */
-.cta-section {
-    padding: 3rem 0;
-    margin: 0;
-    width: 100%;
-    clear: both; /* Clear any floats */
-    position: relative;
-    z-index: 1;
-    background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa) !important;
-}
-
-/* Add clear spacing between sections */
-section {
-    margin-bottom: 0;
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-    overflow: visible !important;
-    position: relative;
-    z-index: 1;
-}
-
-/* Container fix to ensure proper width and alignment */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    box-sizing: border-box;
-}
-
-/* Fix for grid layout to prevent overflow */
-.grid {
-    display: grid;
-    width: 100%;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-/* Fix why-choose-card positioning */
-.why-choose-card {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-}
-
-/* Ensure service tags don't cause overflow */
+/* Service tags with better visual style */
 .service-tag {
-    z-index: 3;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    padding: 0.35rem 1rem !important;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Ensure sparkles don't cause overflow */
-.sparkles {
-    overflow: hidden;
-}
-
-/* Reset any global styles that might interfere */
-body section {
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-/* Media queries for responsive behavior */
-@media (max-width: 768px) {
-    /* Increase spacing on mobile to prevent intersection */
-    .services-section {
-        padding-bottom: 4rem;
-    }
-    
-    /* Ensure section containers respect boundaries */
-    section {
-        overflow: hidden;
-    }
-    
-    /* Ensure grid items stack properly on mobile */
-    .grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* Fix for section alignment issues */
-
-/* Fix services section containment */
+/* Section spacing fix */
 .services-section {
+    padding-bottom: 6rem !important;
+}
+
+/* Enhanced heading styles */
+.gradient-heading, .gradient-heading-alt {
+    font-weight: 800;
+    letter-spacing: 0.5px;
     position: relative;
-    padding: 5rem 0;
-    margin: 0;
-    overflow: visible;
-    background: linear-gradient(135deg, rgba(245, 247, 250, 0.95), rgba(240, 249, 255, 0.95)) !important;
-    z-index: 2;
+    display: inline-block;
+    padding-bottom: 0.5rem;
 }
 
-/* Container for services grid */
-.services-grid-container {
-    position: relative;
-    z-index: 2;
-    overflow: visible;
-    margin-bottom: 4rem; /* Extra space at bottom of grid */
+.gradient-heading::after, .gradient-heading-alt::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0));
+    border-radius: 2px;
 }
 
-/* Force service cards to render properly */
-.service-card {
-    position: relative;
-    z-index: 2;
-    height: auto;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px !important;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-    overflow: hidden;
-    transform: none !important; /* Prevent any unwanted transforms */
+/* Service section subtitle enhancement */
+.services-section p.text-lg {
+    color: #4b5563 !important;
+    font-size: 1.2rem !important;
+    max-width: 800px !important;
+    margin-bottom: 3rem !important;
 }
 
-/* Fix "Why Choose" card */
-.why-choose-card {
-    position: relative;
-    z-index: 2;
-    height: auto;
-    min-height: 100px;
-    margin-bottom: 20px !important;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+/* Footer margin fix */
+#footer-container {
+    margin-top: 0 !important;
 }
 
-/* Section separator to ensure proper spacing between sections */
-.section-separator {
-    display: block;
-    width: 100%;
-    height: 4rem;
-    clear: both;
-    background: transparent;
-}
-
-/* Ensure CTA section doesn't overlap */
-.cta-section {
+/* Service card list items enhancement */
+.service-card ul li {
+    background-color: rgba(243, 244, 246, 0.7) !important;
+    border-radius: 0.5rem !important;
+    padding: 0.75rem 1rem !important;
+    margin-bottom: 0.75rem !important;
+    transition: all 0.3s ease !important;
     position: relative;
     z-index: 1;
-    padding: 4rem 0;
-    margin: 0;
-    clear: both;
-    background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa) !important;
 }
 
-.cta-section .container {
+.service-card ul li:hover {
+    transform: translateX(8px) !important;
+}
+
+.service-card:first-child ul li:hover {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+.service-card:nth-child(2) ul li:hover {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.service-card:nth-child(3) ul li:hover {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+/* Section separator enhancement */
+.section-separator {
+    height: 6rem !important;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
-/* Fix alignment of lists in service cards */
-.service-card ul {
-    margin: 0;
-    padding: 0 0 0 0.5rem;
-    list-style-position: inside;
+.section-separator::after {
+    content: '';
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0));
+    border-radius: 2px;
 }
 
-.service-card ul li {
-    margin-bottom: 0.5rem;
-}
-
-/* Fix media queries for responsive behavior */
+/* Fix spacing for mobile */
 @media (max-width: 768px) {
-    .services-section {
-        padding: 3rem 0 6rem; /* Extra padding at bottom */
+    .why-choose-card {
+        margin: 3rem 1rem !important;
+        padding: 1.5rem !important;
     }
     
-    .service-card, 
-    .why-choose-card {
-        margin-bottom: 1.5rem !important;
+    .why-choose-item {
+        padding: 1.2rem !important;
+        margin-bottom: 1rem;
     }
     
     .section-separator {
-        height: 3rem;
+        height: 4rem !important;
+    }
+    
+    .check-icon-container {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .check-icon-container i {
+        font-size: 1.5rem !important;
     }
 }
 
-/* Ensure service tags don't cause overflow */
-.service-tag {
-    z-index: 3;
-    font-size: 0.8rem;
+/* Enhanced scroll to top button with better visibility */
+.scroll-top {
+    background: linear-gradient(135deg, #f97316, #fb923c) !important;
+    color: white !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3), 0 0 15px rgba(249, 115, 22, 0.3) !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    z-index: 1000 !important;
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    display: none !important; /* Hidden initially */
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    border: none !important;
+    font-size: 1.5rem !important;
+    opacity: 0 !important;
+}
+
+/* Visible state styles */
+.scroll-top.scroll-visible {
+    display: flex !important;
+    opacity: 1 !important;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Hover effect */
+.scroll-top:hover {
+    transform: translateY(-12px) scale(1.15) !important;
+    box-shadow: 0 20px 45px rgba(249, 115, 22, 0.5), 0 0 35px rgba(249, 115, 22, 0.4) !important;
+}
+
+/* Icon transition */
+.scroll-top i {
+    transition: all 0.3s ease !important;
+}
+
+.scroll-top:hover i {
+    transform: translateY(-3px) !important;
+}
+
+/* Animation for appearance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fix for CTA content with improved contrast */
+.cta-content {
+    background: rgba(31, 41, 55, 0.75); /* Darker, more opaque background */
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: inline-block;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure text is clearly visible */
+.cta-content h2, 
+.cta-content p {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.cta-content h2 {
+    font-size: 2rem !important;
+}
+
+.cta-content p {
+    font-size: 1.2rem !important;
+    margin-bottom: 1.5rem;
+}
+
+/* CTA section backdrop enhancement */
+.cta-section {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb, #60a5fa) !important;
 }
 
