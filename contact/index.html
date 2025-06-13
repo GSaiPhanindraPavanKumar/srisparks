@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SriSparks Infra Pvt Ltd</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../components/navbar/navbar.css">
+    <link rel="stylesheet" href="../components/footer/footer.css">
+    <link rel="icon" href="../images/favicon/favicon.png">
+    <link rel="apple-touch-icon" href="../images/favicon/favicon.png">
+    <link rel="stylesheet" href="../style-additions.css">
+    <link rel="stylesheet" href="../scrolltotop/scroll-to-top.css">
+    <link rel="stylesheet" href="./contact.css">
+</head>
+<body class="font-sans">
+    <!-- Include Navbar -->
+    <div id="navbar-container" data-parent-level="../"></div>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero-section text-white overflow-hidden">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="container mx-auto px-4 text-center">
+            <span class="contact-badge">Get in Touch</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+            <p class="text-xl max-w-3xl mx-auto">We're here to help with your solar and infrastructure needs</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="info-badge">CONNECT WITH US</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Our Contact Information</h2>
+                <div class="contact-divider mx-auto"></div>
+                <p class="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">Reach out to us through any of these channels</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+                <!-- Phone Contact -->
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper phone">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>Talk to our support team</p>
+                    <div class="contact-detail">
+                        <a href="tel:+919652050571">+91 96520 50571</a>
+                    </div>
+                </div>
+
+                <!-- Email Contact -->
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Send us your inquiries</p>
+                    <div class="contact-detail">
+                        <a href="mailto:info@srisparks.com">info@srisparks.com</a>
+                    </div>
+                </div>
+
+                <!-- Location Contact -->
+                <div class="contact-info-card">
+                    <div class="contact-icon-wrapper location">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Visit our office</p>
+                    <div class="contact-detail address">
+                        Door No: 7-184/3, 2nd Floor,<br>
+                        New Building Colony,<br>
+                        Palangi, Tanuku - 534216,<br>
+                        E.G.Dist, Andhra Pradesh
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-16 contact-form-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="form-badge">SEND A MESSAGE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text-alt">Get in Touch With Us</h2>
+                <div class="contact-divider form-divider mx-auto"></div>
+                <p class="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">Fill out the form below, and we'll get back to you as soon as possible</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Update the form to work with Google Apps Script without CORS issues -->
+                <form id="contactForm" class="contact-form" method="post">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="form-group">
+                            <label for="name">Your Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number <span class="text-red-500">*</span></label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                            <div class="error-message" id="mobileError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="form-group">
+                            <label for="city">Village/Town/City <span class="text-red-500">*</span></label>
+                            <input type="text" id="city" name="city" placeholder="Enter your location" required>
+                            <div class="error-message" id="cityError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Select Category <span class="text-red-500">*</span></label>
+                            <select id="category" name="category" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="domestic">Domestic Solar</option>
+                                <option value="commercial">Commercial Solar</option>
+                                <option value="others">Others</option>
+                            </select>
+                            <div class="error-message" id="categoryError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mb-8">
+                        <label for="message">Comments/Message <span id="messageRequired" class="text-gray-500">(Optional)</span></label>
+                        <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+                        <div class="error-message" id="messageError"></div>
+                        <div class="text-sm text-gray-500 mt-1" id="messageNote">
+                            <i class="fas fa-info-circle mr-1"></i> Message is required when "Others" is selected
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="submit-button">
+                            <span>Submit Request</span>
+                            <i class="fas fa-paper-plane ml-2"></i>
+                            <span class="button-shine"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Form Success Message (Hidden by Default) -->
+                <div id="formSuccess" class="success-message hidden">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent successfully. Our team will contact you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section - Updated with proper error handling -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.9601784776883!2d81.6970473!3d16.773424100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37b9000ca0cedd%3A0xb9e9e8d076191c02!2sSrisparks%20Infra%20Private%20limited!5e1!3m2!1sen!2sin!4v1747807414309!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div id="footer-container" data-parent-level="../"></div>
+    
+    <script src="../components/navbar/navbar.js" type="module"></script>
+    <script src="../script.js" type="module"></script>
+    <script src="../scroll-animations.js"></script>
+    <script src="../scrolltotop/scroll-to-top.js"></script>
+    <script src="./contact.js"></script>
+</body>
+</html>
+    <!-- Footer Component -->
+    <div id="footer-container" data-parent-level="../"></div>
+    
+    <script src="../components/navbar/navbar.js" type="module"></script>
+    <script src="../script.js" type="module"></script>
+    <script src="../scroll-animations.js"></script>
+    <script src="../scrolltotop/scroll-to-top.js"></script>
+    <script src="./contact.js"></script>
+</body>
+</html>
