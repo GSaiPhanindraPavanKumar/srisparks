@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageNote = document.getElementById('messageNote');
     const submitButton = document.querySelector('.submit-button');
 
+    let isSubmitting = false; // Prevent double submissions
+
     // Show message note when form loads
     if (messageNote) {
         messageNote.style.display = 'block';
@@ -33,7 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            if (!validateForm()) return false;
+            if (isSubmitting) return; // Prevent multiple clicks
+            isSubmitting = true;
+
+            if (!validateForm()) {
+                isSubmitting = false;
+                return false;
+            }
 
             // Show loading state
             if (submitButton) {
@@ -42,23 +50,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const formData = new FormData(contactForm);
-            const formProps = Object.fromEntries(formData);
 
-            // Add category label to message
+            // Add category name to message
             if (categorySelect) {
                 const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
-                formProps.message = (formProps.message ? formProps.message : '') +
-                    (formProps.message ? '\n\n' : '') +
-                    'Category: ' + categoryText;
+                const existingMessage = formData.get("message") || "";
+                formData.set("message", existingMessage + (existingMessage ? "\n\n" : ""));
             }
 
-            const jsonData = JSON.stringify(formProps);
-
-            // ✅ Use fetch instead of XMLHttpRequest
+            // Submit via fetch (CORS-safe using FormData)
             fetch(scriptURL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: jsonData
+                body: formData
             })
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok');
@@ -78,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert('Error submitting form! Please try again later.');
                 })
                 .finally(() => {
+                    isSubmitting = false;
                     if (submitButton) {
                         submitButton.disabled = false;
                         submitButton.innerHTML = '<span>Submit Request</span><i class="fas fa-paper-plane ml-2"></i><span class="button-shine"></span>';
@@ -89,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Validation Functions ---
     function validateForm() {
         clearErrors();
-
         let isValid = true;
 
         if (!validateRequired('name')) isValid = false;
