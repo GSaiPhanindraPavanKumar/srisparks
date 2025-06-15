@@ -51,14 +51,20 @@
 #mobile-menu {
     transition: all 0.3s ease-in-out;
     transform-origin: top;
+    opacity: 1;
+    max-height: 1000px; /* Large enough to contain all content */
+    overflow: hidden;
 }
 
 #mobile-menu.hidden {
     transform: scaleY(0);
+    max-height: 0;
+    opacity: 0;
 }
 
 #mobile-menu:not(.hidden) {
     transform: scaleY(1);
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -130,18 +136,71 @@
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Dropdown arrow for mobile */
+.dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+    /* Remove pointer-events: none to make arrow clickable */
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+.dropdown.active > a > .dropdown-arrow,
+.sub-dropdown.active > a > .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
 /* Mobile dropdown adjustments */
 @media (max-width: 768px) {
     .dropdown-content,
     .sub-dropdown-content {
+        display: none; /* Hide by default */
         position: static;
-        display: none;
         background: rgba(0, 0, 0, 0.1);
         padding-left: 1rem;
     }
-
-    .dropdown.active .dropdown-content,
-    .sub-dropdown.active .sub-dropdown-content {
+    
+    /* Show when parent has active class */
+    .dropdown.active > .dropdown-content,
+    .sub-dropdown.active > .sub-dropdown-content {
         display: block;
+    }
+    
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+    }
+    
+    .dropdown-arrow {
+        font-size: 1rem;
+        padding: 4px;
+        margin-left: 4px;
+        transition: transform 0.3s ease;
+        pointer-events: auto; /* Make sure arrow is clickable */
+    }
+    
+    /* Make the content area more obvious */
+    .dropdown-content,
+    .sub-dropdown-content {
+        border-left: 2px solid rgba(255, 255, 255, 0.2);
+        margin: 4px 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    /* Styling for submenu items */
+    .dropdown-content a,
+    .sub-dropdown-content a {
+        padding: 8px 12px;
+    }
+    
+    /* Toggle behavior via JS only - the 'active' class isn't used for display anymore */
+    .dropdown.active > a,
+    .sub-dropdown.active > a {
+        color: #ffcc00;
+        font-weight: bold;
     }
 }

@@ -45,10 +45,14 @@
                 <a href="/about" class="nav-link text-white hover:text-secondary">About Us</a>
                 <a href="/services" class="nav-link text-white hover:text-secondary">Services</a>
                 <div class="dropdown">
-                    <a href="javascript:void(0)" class="nav-link text-white hover:text-secondary">Solar Projects</a>
+                    <a href="javascript:void(0)" class="nav-link text-white hover:text-secondary">
+                        Solar Projects <i class="fas fa-chevron-down dropdown-arrow ml-1"></i>
+                    </a>
                     <div class="dropdown-content">
                         <div class="sub-dropdown">
-                            <a href="javascript:void(0)" class="nav-link">Roof Top</a>
+                            <a href="javascript:void(0)" class="nav-link">
+                                Roof Top <i class="fas fa-chevron-down dropdown-arrow ml-1"></i>
+                            </a>
                             <div class="sub-dropdown-content">
                                 <a href="/solar/pm-surya-ghar" class="nav-link">PM Surya Ghar</a>
                                 <a href="/solar/commercial" class="nav-link">Commercial</a>
@@ -59,9 +63,54 @@
                 </div>
                 <a href="/om" class="nav-link text-white hover:text-secondary">O&M / Manpower</a>
                 <a href="/projects" class="nav-link text-white hover:text-secondary">Projects</a>
-                <!-- <a href="#values" class="nav-link text-white hover:text-secondary">Core Values</a> -->
                 <a href="/contact" class="nav-link text-white hover:text-secondary">Contact Us</a>
             </nav>
         </div>
     </div>
 </div>
+
+<!-- Helper script for navbar -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Execute after a slight delay to ensure everything else is loaded
+        setTimeout(function() {
+            // Force reinitializing mobile menu
+            if (typeof window.fixNavbar === 'function') {
+                window.fixNavbar();
+            }
+            
+            // Add event listeners directly to prevent menu from closing when dropdowns are clicked
+            document.querySelectorAll('#mobile-menu .dropdown > a, #mobile-menu .sub-dropdown > a').forEach(function(item) {
+                item.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the dropdown without closing the menu
+                    this.parentElement.classList.toggle('active');
+                    document.getElementById('mobile-menu').classList.remove('hidden');
+                    
+                    return false;
+                };
+            });
+            
+            // Add specific handlers for arrow icons to prevent menu closing
+            document.querySelectorAll('#mobile-menu .dropdown-arrow').forEach(function(arrow) {
+                arrow.onclick = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Ensure parent element (LI) gets the active class
+                    const parentLi = this.closest('.dropdown') || this.closest('.sub-dropdown');
+                    if (parentLi) {
+                        parentLi.classList.toggle('active');
+                    }
+                    
+                    // Make sure mobile menu stays visible
+                    document.getElementById('mobile-menu').classList.remove('hidden');
+                    
+                    return false;
+                };
+            });
+        }, 300);
+    });
+</script>

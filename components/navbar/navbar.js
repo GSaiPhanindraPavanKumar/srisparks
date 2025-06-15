@@ -46,62 +46,121 @@ function initMobileMenu() {
     const menuButton = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    menuButton?.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Add dropdown functionality for mobile
-    const dropdowns = document.querySelectorAll('.dropdown > a');
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                e.stopPropagation(); // Stop event bubbling
-                const parent = dropdown.parentElement;
-                
-                // Close all other open dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(item => {
-                    if (item !== parent) item.classList.remove('active');
-                });
-                
-                parent.classList.toggle('active');
-                return false; // Ensure no navigation happens
+    // Clear any existing click event listeners
+    if (menuButton) {
+        const newMenuButton = menuButton.cloneNode(true);
+        if (menuButton.parentNode) {
+            menuButton.parentNode.replaceChild(newMenuButton, menuButton);
+        }
+        
+        // Add event listener to the new button
+        document.getElementById('menu-toggle')?.addEventListener('click', () => {
+            const mMenu = document.getElementById('mobile-menu');
+            if (mMenu) {
+                mMenu.classList.toggle('hidden');
+                console.log('Mobile menu toggled', mMenu.classList.contains('hidden') ? 'hidden' : 'visible');
             }
         });
-    });
-
-    const subDropdowns = document.querySelectorAll('.sub-dropdown > a');
-    subDropdowns.forEach(subDropdown => {
-        subDropdown.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
+    }
+    
+    if (mobileMenu) {
+        // Handle dropdowns in mobile menu
+        const dropdownToggles = mobileMenu.querySelectorAll('.dropdown > a');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation(); // Stop event bubbling
-                const parent = subDropdown.parentElement;
+                e.stopPropagation();
                 
-                // Close all other open sub-dropdowns
-                const siblings = parent.parentElement.querySelectorAll('.sub-dropdown.active');
-                siblings.forEach(item => {
-                    if (item !== parent) item.classList.remove('active');
+                const dropdown = this.parentElement;
+                dropdown.classList.toggle('active');
+                
+                // IMPORTANT: Don't close the mobile menu
+                mobileMenu.classList.remove('hidden');
+                
+                return false;
+            });
+            
+            // Add specific handler for the arrow icon to prevent menu hiding
+            const arrow = toggle.querySelector('.dropdown-arrow');
+            if (arrow) {
+                arrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Ensure mobile menu stays visible
+                    mobileMenu.classList.remove('hidden');
+                    
+                    // Toggle the dropdown active state
+                    const dropdown = this.closest('.dropdown');
+                    if (dropdown) dropdown.classList.toggle('active');
+                    
+                    return false;
                 });
-                
-                parent.classList.toggle('active');
-                return false; // Ensure no navigation happens
             }
         });
-    });
-
-    // Only close mobile menu on click of actual navigation links, not dropdown toggles
-    const mobileLinks = mobileMenu?.querySelectorAll('a:not(.dropdown > a):not(.sub-dropdown > a)') || [];
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Only close menu when clicking a non-dropdown link
+        
+        // Set up sub-dropdown toggles with similar arrow handling
+        const subDropdownToggles = mobileMenu.querySelectorAll('.sub-dropdown > a');
+        subDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const subDropdown = this.parentElement;
+                subDropdown.classList.toggle('active');
+                
+                // IMPORTANT: Don't close the mobile menu
+                mobileMenu.classList.remove('hidden');
+                
+                return false;
+            });
+            
+            // Add specific handler for the sub-dropdown arrow icon
+            const arrow = toggle.querySelector('.dropdown-arrow');
+            if (arrow) {
+                arrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Ensure mobile menu stays visible
+                    mobileMenu.classList.remove('hidden');
+                    
+                    // Toggle the sub-dropdown active state
+                    const subDropdown = this.closest('.sub-dropdown');
+                    if (subDropdown) subDropdown.classList.toggle('active');
+                    
+                    return false;
+                });
+            }
+        });
+        
+        // Only close menu when clicking actual navigation links (not toggles)
+        const navigationLinks = mobileMenu.querySelectorAll('a');
+        navigationLinks.forEach(link => {
             if (!link.parentElement.classList.contains('dropdown') && 
                 !link.parentElement.classList.contains('sub-dropdown')) {
-                mobileMenu.classList.add('hidden');
+                
+                // Only these links should close the menu
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
             }
         });
-    });
+    }
 }
+
+// Create a global function to reinitialize the mobile menu
+window.fixNavbar = function() {
+    initMobileMenu();
+    console.log('Mobile menu initialized');
+};
+
+// Initialize the navbar when the DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initNavbar();
+    initMobileMenu();
+    console.log('Navbar initialized');
+});
 
 function validateRoute(path) {
     const baseUrl = window.location.origin;
