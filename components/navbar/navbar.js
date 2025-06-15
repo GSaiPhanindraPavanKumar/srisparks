@@ -5,6 +5,16 @@ function initNavbar() {
         const navLinks = navbar.querySelectorAll('a[href^="/#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                // Don't process dropdown parent links in mobile view
+                const isMobileDropdownParent = 
+                    window.innerWidth <= 768 && 
+                    (link.parentElement.classList.contains('dropdown') || 
+                     link.parentElement.classList.contains('sub-dropdown'));
+                
+                if (isMobileDropdownParent) {
+                    return; // Let the dropdown handler deal with this
+                }
+                
                 e.preventDefault();
                 const targetId = link.getAttribute('href').replace('/', '');
                 const targetElement = document.querySelector(targetId);
@@ -46,8 +56,16 @@ function initMobileMenu() {
         dropdown.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
+                e.stopPropagation(); // Stop event bubbling
                 const parent = dropdown.parentElement;
+                
+                // Close all other open dropdowns
+                document.querySelectorAll('.dropdown.active').forEach(item => {
+                    if (item !== parent) item.classList.remove('active');
+                });
+                
                 parent.classList.toggle('active');
+                return false; // Ensure no navigation happens
             }
         });
     });
@@ -57,18 +75,32 @@ function initMobileMenu() {
         subDropdown.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
+                e.stopPropagation(); // Stop event bubbling
                 const parent = subDropdown.parentElement;
+                
+                // Close all other open sub-dropdowns
+                const siblings = parent.parentElement.querySelectorAll('.sub-dropdown.active');
+                siblings.forEach(item => {
+                    if (item !== parent) item.classList.remove('active');
+                });
+                
                 parent.classList.toggle('active');
+                return false; // Ensure no navigation happens
             }
         });
     });
 
-    const mobileLinks = mobileMenu?.getElementsByTagName('a') || [];
-    for (let link of mobileLinks) {
+    // Only close mobile menu on click of actual navigation links, not dropdown toggles
+    const mobileLinks = mobileMenu?.querySelectorAll('a:not(.dropdown > a):not(.sub-dropdown > a)') || [];
+    mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+            // Only close menu when clicking a non-dropdown link
+            if (!link.parentElement.classList.contains('dropdown') && 
+                !link.parentElement.classList.contains('sub-dropdown')) {
+                mobileMenu.classList.add('hidden');
+            }
         });
-    }
+    });
 }
 
 function validateRoute(path) {
