@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../../components/navbar/navbar.css">
     <link rel="stylesheet" href="../../components/footer/footer.css">
     <link rel="stylesheet" href="./styles.css">
-    <!-- <link rel="stylesheet" href="../styles.css"> -->
+    <!-- Add Solar Estimator CSS -->
+    <link rel="stylesheet" href="./solar-estimator/solar-estimator.css">
     <link rel="icon" href="../../images/favicon/favicon.png">
     <link rel="apple-touch-icon" href="../../images/favicon/favicon.png">
     <!-- Add AOS animation library -->
@@ -283,6 +284,97 @@
         </div>
     </section>
 
+    <!-- Move Solar Estimator to here - after installations section -->
+    <section id="solar-estimator" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">CALCULATE YOUR SAVINGS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-4" data-aos="fade-up">Solar System Estimator</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto mt-4"></div>
+            </div>
+            
+            <!-- Solar Estimator Widget - Side by Side Layout -->
+            <div class="solar-estimator-container" data-aos="fade-up">
+                <div class="solar-estimator-layout">
+                    <div class="solar-estimator-input">
+                        <div class="form-group">
+                            <label for="capacity-selector">Solar System Capacity</label>
+                            <select id="capacity-selector" class="capacity-selector">
+                                <option value="2">2 kW</option>
+                                <option value="3" selected>3 kW</option>
+                                <option value="4">4 kW</option>
+                                <option value="5">5 kW</option>
+                                <option value="6">6 kW</option>
+                                <option value="7">7 kW</option>
+                                <option value="8">8 kW</option>
+                                <option value="9">9 kW</option>
+                                <option value="10">10 kW</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Add commercial recommendation for larger systems -->
+                        <div id="commercial-recommendation" class="mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-lg hidden animate-pulse">
+                            <p class="text-yellow-800 font-medium flex items-center">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2 text-xl"></i>
+                                <span>For systems larger than 5kW, check our <a href="../commercial/" class="text-blue-600 underline font-bold">Commercial Solar Solutions</a> which may be more suitable for your needs.</span>
+                            </p>
+                        </div>
+                        
+                        <div class="mt-5 text-gray-600">
+                            <div class="mb-3">
+                                <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                                <span>For residential homes, 3-5 kW is typically sufficient</span>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                                <span>Higher capacity systems generate more electricity and savings</span>
+                            </div>
+                            <!-- Add disclaimer note -->
+                            <div class="mt-6 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                <p class="text-sm text-blue-800">
+                                    <i class="fas fa-exclamation-circle mr-2"></i>
+                                    <strong>Note:</strong> Actual values may vary based on weather conditions, installation angle, shadow effects, and local electricity tariffs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solar-estimator-output">
+                        <div class="solar-results">
+                            <h3>Your Solar System Estimate</h3>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">System Capacity</div>
+                                    <div class="result-value" id="result-capacity">3.0 kW</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Space Required</div>
+                                    <div class="result-value" id="result-space">300 sq.ft</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Annual Energy</div>
+                                    <div class="result-value" id="result-energy">4,200 units</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Annual Savings</div>
+                                    <div class="result-value" id="result-savings">₹29,400</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Estimated Cost (Excl. GST & Subsidy)</div>
+                                    <div class="result-value" id="result-cost">₹180,000</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Govt. Subsidy</div>
+                                    <div class="result-value" id="result-subsidy">₹78,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Enhanced CTA Section with animated shapes -->
     <section class="cta-section text-white">
         <div class="cta-shape cta-shape-1"></div>
@@ -310,6 +402,7 @@
     <script type="module">
         import { initializeCarousel } from './js/carousel-config.js';
         import { setupImageLoading } from './js/image-loader.js';
+        import { initSolarEstimator } from './solar-estimator/solar-estimator.js';
         
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize AOS animations
@@ -326,6 +419,9 @@
             
             // Initialize the installation carousel with the configured images
             initializeCarousel();
+            
+            // Initialize the solar estimator widget
+            initSolarEstimator();
             
             // Force-fix any display issues with benefit cards
             setTimeout(() => {
