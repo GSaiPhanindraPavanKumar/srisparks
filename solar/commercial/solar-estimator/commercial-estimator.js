@@ -53,10 +53,14 @@ function updateCommercialResults(capacity) {
     document.getElementById('result-energy').textContent = results.annualEnergy.toLocaleString() + ' units';
     document.getElementById('result-savings').textContent = '₹' + results.annualSavings.toLocaleString();
     
-    // Calculate and display price range based on input capacity
-    const minCost = Math.round(capacity * 56000).toLocaleString();
-    const maxCost = Math.round(capacity * 60000).toLocaleString();
-    document.getElementById('result-cost').textContent = `₹${minCost} - ₹${maxCost}`;
+    // Show negotiable investment and contact prompt
+    document.getElementById('result-cost').innerHTML = `
+        <span style="color:#2563eb;font-weight:600;">Negotiable</span>
+        <br>
+        <span style="font-size:13px;color:#444;">
+            Please <a href="/contact" style="color:#2563eb;text-decoration:underline;font-weight:500;">contact us</a> for the best price.
+        </span>
+    `;
 }
 
 function calculateCommercialSolarResults(capacity) {

@@ -2,7 +2,7 @@
 .floating-contact-container {
   position: fixed;
   top: 50%;
-  left: 0;
+  right: 0; /* Changed from left: 0 to right: 0 */
   transform: translateY(-50%);
   z-index: 9999;
   transition: all 0.3s ease-in-out;
@@ -12,12 +12,12 @@
 .floating-contact-button {
   background: linear-gradient(135deg, #0056b3, #0088ff);
   color: white;
-  border-radius: 0 8px 8px 0; /* Rounded on the right side only */
+  border-radius: 8px 0 0 8px; /* Rounded on the left side only - reversed */
   padding: 20px 10px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: row; /* Stack items vertically */
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 12px;
@@ -25,28 +25,28 @@
   transition: all 0.3s ease;
   border: none;
   font-size: 16px;
-  writing-mode: vertical-lr; /* Changed to lr for better readability */
-  transform: rotate(0deg); /* No rotation needed with vertical-lr */
+  writing-mode: vertical-lr;
+  transform: rotate(0deg);
   height: auto;
   min-height: 200px;
   width: 50px;
 }
 
 .floating-contact-button:hover {
-  transform: translateX(5px); /* Remove rotation from hover */
+  transform: translateX(-5px); /* Changed to negative for right side positioning */
   box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);
 }
 
 .floating-contact-button .fa-envelope {
   font-size: 20px;
-  margin: 0 0 10px 0; /* Add bottom margin to separate from text */
-  transform: rotate(90deg); /* Rotate icon to make it upright */
+  margin: 0 0 10px 0;
+  transform: rotate(90deg);
 }
 
 .floating-contact-form {
   position: absolute;
   top: -40%;
-  left: 60px; /* Position to the right of the button */
+  right: 60px; /* Changed from left: 60px to right: 60px */
   width: 320px;
   background: white;
   border-radius: 10px;
@@ -60,33 +60,33 @@
   z-index: 5; /* Ensure form appears above other elements */
 }
 
-/* Add a pointer to connect form with button */
+/* Add a pointer to connect form with button - reversed direction */
 .floating-contact-form::before {
   content: '';
   position: absolute;
-  left: -10px;
+  right: -10px; /* Changed from left: -10px to right: -10px */
   top: 50%;
   transform: translateY(-50%);
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid white;
+  border-left: 10px solid white; /* Changed from border-right to border-left */
   z-index: 2;
 }
 
-/* Add a pointer shadow for depth */
+/* Add a pointer shadow for depth - reversed direction */
 .floating-contact-form::after {
   content: '';
   position: absolute;
-  left: -11px;
+  right: -11px; /* Changed from left: -11px to right: -11px */
   top: 50%;
   transform: translateY(-50%);
   width: 0;
   height: 0;
   border-top: 11px solid transparent;
   border-bottom: 11px solid transparent;
-  border-right: 11px solid rgba(0, 0, 0, 0.1);
+  border-left: 11px solid rgba(0, 0, 0, 0.1); /* Changed from border-right to border-left */
   z-index: 1;
 }
 
@@ -233,56 +233,56 @@
   
   .floating-contact-form {
     width: 300px;
-    left: 50px;
+    right: 50px; /* Changed from left: 50px to right: 50px */
   }
 }
 
 @media (max-width: 480px) {
   .floating-contact-container {
     top: 50%; 
-    left: 0;
+    right: 0; /* Changed from left: 0 to right: 0 */
     transform: translateY(-50%);
   }
   
   .floating-contact-button {
     flex-direction: row;
-    writing-mode: vertical-lr; /* Keep vertical writing mode */
-    transform: rotate(0deg); /* Rotate 90 degrees clockwise */
+    writing-mode: vertical-lr;
+    transform: rotate(0deg);
     padding: 10px;
     min-height: 40px;
     width: auto;
-    border-radius: 0 0 8px 8px; /* Adjust border radius for rotated button */
+    border-radius: 8px 8px 0 0; /* Adjusted for right-side positioning */
   }
   
   .floating-contact-button .fa-envelope {
-    margin: 0 0 0 8px; /* Adjust margin for the rotated layout */
-    transform: rotate(90deg); /* Rotate icon 90 degrees clockwise */
+    margin: 0 0 0 8px;
+    transform: rotate(90deg);
   }
   
   .floating-contact-form {
-    top: 0;
-    left: 100%; /* Position form to the right of the button */
+    top: -35px;
+    right: 100%; /* Changed from left: 100% to right: 100% */
     transform: translateY(-30%);
   }
   
-  /* Adjust pointer for rotated view */
+  /* Adjust pointer for rotated view - reversed direction */
   .floating-contact-form::before {
-    left: -10px;
+    right: -10px; /* Changed from left: -10px to right: -10px */
     top: 30%;
     transform: none;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid white;
-    border-left: none;
+    border-left: 10px solid white; /* Changed from border-right to border-left */
+    border-right: none;
   }
   
   .floating-contact-form::after {
-    left: -11px;
+    right: -11px; /* Changed from left: -11px to right: -11px */
     top: 30%;
     transform: none;
     border-top: 11px solid transparent;
     border-bottom: 11px solid transparent;
-    border-right: 11px solid rgba(0, 0, 0, 0.1);
-    border-left: none;
+    border-left: 11px solid rgba(0, 0, 0, 0.1); /* Changed from border-right to border-left */
+    border-right: none;
   }
 }
